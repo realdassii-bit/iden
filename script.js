@@ -1,606 +1,152 @@
-/**
- * =====================================================
- * IDEN — Sonic Universe
- * Main JavaScript — with Easter Eggs
- * =====================================================
- */
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded',()=>{
     initSecurity();
     initPreloader();
     initParticles();
-    initRevealAnimations();
-    initMobileMenu();
+    initReveal();
+    initNav();
     initSmoothScroll();
     initTypewriter();
-    initAudioPlayer();
-    initCounterAnimation();
-    initAllEasterEggs();
-    initSoundEffects();
-    initSecretConsole();
+    initCounter();
+    initEasterEggs();
 });
 
 /* =====================================================
    SECURITY
 ===================================================== */
-function initSecurity() {
-    document.addEventListener('contextmenu', (e) => {
-        e.preventDefault();
-        showNotification('⛔', 'دسترسی محدود', 'کلیک راست غیرفعاله.');
-    });
-
-    document.addEventListener('keydown', (e) => {
-        const blocked = [
-            e.key === 'F12',
-            (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key.toUpperCase())),
-            (e.ctrlKey && ['U','S'].includes(e.key.toUpperCase())),
-        ];
-        if (blocked.some(Boolean)) {
-            e.preventDefault();
-            showNotification('🔒', 'دسترسی محدود', 'ابزارهای توسعه‌دهنده غیرفعالن.');
+function initSecurity(){
+    document.addEventListener('contextmenu',e=>{e.preventDefault();notif('⛔','دسترسی محدود','کلیک راست غیرفعال است.')});
+    document.addEventListener('keydown',e=>{
+        if(e.key==='F12'||(e.ctrlKey&&e.shiftKey&&['I','J','C'].includes(e.key.toUpperCase()))||(e.ctrlKey&&['U','S'].includes(e.key.toUpperCase()))){
+            e.preventDefault();notif('🔒','دسترسی محدود','ابزارهای توسعه‌دهنده غیرفعال هستند.');
         }
     });
+    setInterval(()=>{if(window.outerWidth-window.innerWidth>160||window.outerHeight-window.innerHeight>160)notif('🛡️','هشدار','Developer Tools را ببندید.')},1000);
 }
 
-/* =====================================================
-   NOTIFICATION
-===================================================== */
-function showNotification(icon, title, message, duration = 4000) {
-    const container = document.getElementById('notificationContainer');
-    const notif = document.createElement('div');
-    notif.className = 'notification';
-    notif.innerHTML = `
-        <span class="notification-icon">${icon}</span>
-        <div class="notification-content">
-            <h4>${title}</h4>
-            <p>${message}</p>
-        </div>
-    `;
-    container.appendChild(notif);
-    
-    setTimeout(() => {
-        notif.classList.add('removing');
-        setTimeout(() => notif.remove(), 300);
-    }, duration);
-    
-    notif.addEventListener('click', () => {
-        notif.classList.add('removing');
-        setTimeout(() => notif.remove(), 300);
-    });
+function notif(icon,title,msg){
+    const c=document.getElementById('notifContainer');
+    const d=document.createElement('div');d.className='notif';
+    d.innerHTML=`<span class="notif-icon">${icon}</span><div><h4>${title}</h4><p>${msg}</p></div>`;
+    c.appendChild(d);
+    setTimeout(()=>{d.classList.add('removing');setTimeout(()=>d.remove(),300)},4000);
+    d.addEventListener('click',()=>{d.classList.add('removing');setTimeout(()=>d.remove(),300)});
 }
 
 /* =====================================================
    PRELOADER
 ===================================================== */
-function initPreloader() {
-    const preloader = document.getElementById('preloader');
-    const progressBar = document.getElementById('progressBar');
-    if (!preloader) return;
-    
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.random() * 15;
-        if (progress > 100) progress = 100;
-        if (progressBar) progressBar.style.width = progress + '%';
-        if (progress >= 100) {
-            clearInterval(interval);
-            setTimeout(() => preloader.classList.add('hidden'), 500);
-        }
-    }, 200);
-    
-    setTimeout(() => {
-        if (!preloader.classList.contains('hidden')) {
-            preloader.classList.add('hidden');
-        }
-    }, 3000);
+function initPreloader(){
+    const p=document.getElementById('preloader'),bar=document.getElementById('preloaderFill');
+    if(!p)return;
+    let w=0;
+    const i=setInterval(()=>{w+=Math.random()*18;if(w>100)w=100;bar.style.width=w+'%';if(w>=100){clearInterval(i);setTimeout(()=>p.classList.add('hidden'),400)}},200);
+    setTimeout(()=>{if(!p.classList.contains('hidden'))p.classList.add('hidden')},2500);
 }
 
 /* =====================================================
    PARTICLES
 ===================================================== */
-function initParticles() {
-    const canvas = document.getElementById('particlesCanvas');
-    if (!canvas) return;
-    
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    let animId;
-    
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-    
-    class Particle {
-        constructor() {
-            this.reset();
-        }
-        reset() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.size = Math.random() * 1.5 + 0.5;
-            this.speedX = (Math.random() - 0.5) * 0.4;
-            this.speedY = (Math.random() - 0.5) * 0.4;
-            this.opacity = Math.random() * 0.4 + 0.1;
-        }
-        update() {
-            this.x += this.speedX;
-            this.y += this.speedY;
-            if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                this.reset();
-            }
-        }
-        draw() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255,255,255,${this.opacity})`;
-            ctx.fill();
-        }
-    }
-    
-    for (let i = 0; i < 70; i++) particles.push(new Particle());
-    
-    function drawConnections() {
-        for (let i = 0; i < particles.length; i++) {
-            for (let j = i + 1; j < particles.length; j++) {
-                const dx = particles[i].x - particles[j].x;
-                const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 130) {
-                    ctx.beginPath();
-                    ctx.moveTo(particles[i].x, particles[i].y);
-                    ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = `rgba(255,255,255,${0.03 * (1 - dist / 130)})`;
-                    ctx.lineWidth = 0.5;
-                    ctx.stroke();
-                }
-            }
-        }
-    }
-    
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => { p.update(); p.draw(); });
-        drawConnections();
-        animId = requestAnimationFrame(animate);
-    }
-    
-    animate();
-    window.addEventListener('beforeunload', () => cancelAnimationFrame(animId));
+function initParticles(){
+    const c=document.getElementById('particleCanvas');
+    if(!c)return;
+    const ctx=c.getContext('2d');
+    let p=[];
+    function r(){c.width=innerWidth;c.height=innerHeight}
+    r();addEventListener('resize',r);
+    class P{constructor(){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.s=Math.random()*1.5+.5;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.o=Math.random()*.3+.1}
+    u(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>c.width||this.y<0||this.y>c.height){this.x=Math.random()*c.width;this.y=Math.random()*c.height}}
+    d(){ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${this.o})`;ctx.fill()}}
+    for(let i=0;i<60;i++)p.push(new P());
+    (function a(){ctx.clearRect(0,0,c.width,c.height);p.forEach(x=>{x.u();x.d()});requestAnimationFrame(a)})();
 }
 
 /* =====================================================
-   REVEAL ON SCROLL
+   REVEAL
 ===================================================== */
-function initRevealAnimations() {
-    const elements = document.querySelectorAll('.reveal');
-    if (!elements.length) return;
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
-    elements.forEach(el => observer.observe(el));
+function initReveal(){
+    new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.15}).observe(document.querySelector('.reveal')?.parentElement||document.body);
+    document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver(e=>{if(e[0].isIntersecting)el.classList.add('visible')},{threshold:.15}).observe(el));
 }
 
 /* =====================================================
-   MOBILE MENU
+   NAV
 ===================================================== */
-function initMobileMenu() {
-    const menuBtn = document.getElementById('menuBtn');
-    const navOverlay = document.getElementById('navOverlay');
-    const navLinks = document.querySelectorAll('.nav-link');
-    if (!menuBtn || !navOverlay) return;
-    
-    menuBtn.addEventListener('click', () => {
-        const isActive = navOverlay.classList.toggle('active');
-        menuBtn.classList.toggle('active');
-        menuBtn.setAttribute('aria-expanded', isActive);
-        document.body.classList.toggle('menu-open');
-    });
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navOverlay.classList.remove('active');
-            menuBtn.classList.remove('active');
-            menuBtn.setAttribute('aria-expanded', 'false');
-            document.body.classList.remove('menu-open');
-        });
-    });
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && navOverlay.classList.contains('active')) {
-            navOverlay.classList.remove('active');
-            menuBtn.classList.remove('active');
-            menuBtn.setAttribute('aria-expanded', 'false');
-            document.body.classList.remove('menu-open');
-        }
-    });
+function initNav(){
+    const b=document.getElementById('navBtn'),m=document.getElementById('navPanel');
+    if(!b||!m)return;
+    b.addEventListener('click',()=>{b.classList.toggle('active');m.classList.toggle('active');document.body.style.overflow=m.classList.contains('active')?'hidden':''});
+    m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{b.classList.remove('active');m.classList.remove('active');document.body.style.overflow=''}));
 }
 
 /* =====================================================
    SMOOTH SCROLL
 ===================================================== */
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            const target = document.querySelector(targetId);
-            if (target) {
-                e.preventDefault();
-                const offset = 80;
-                const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({ top: pos, behavior: 'smooth' });
-            }
-        });
-    });
+function initSmoothScroll(){
+    document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',function(e){const t=document.querySelector(this.getAttribute('href'));if(t){e.preventDefault();scrollTo({top:t.offsetTop-70,behavior:'smooth'})}}));
 }
 
 /* =====================================================
    TYPEWRITER
 ===================================================== */
-function initTypewriter() {
-    const el = document.getElementById('typewriter');
-    if (!el) return;
-    
-    const phrases = [
-        'آهنگساز . پرودیوسر . هنرمند مستقل',
-        'ساختن صدا، فضا و هویت',
-        'جایی که موسیقی احساس می‌شود',
-        'IDEN You Are Crazy',
-    ];
-    
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    
-    function type() {
-        const current = phrases[phraseIndex];
-        if (!isDeleting) {
-            el.innerHTML = current.substring(0, charIndex + 1) + '<span class="cursor-blink"></span>';
-            charIndex++;
-            if (charIndex === current.length) {
-                setTimeout(() => { isDeleting = true; type(); }, 2000);
-                return;
-            }
-        } else {
-            el.innerHTML = current.substring(0, charIndex - 1) + '<span class="cursor-blink"></span>';
-            charIndex--;
-            if (charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                setTimeout(type, 500);
-                return;
-            }
-        }
-        setTimeout(type, isDeleting ? 40 : 80);
+function initTypewriter(){
+    const el=document.getElementById('typewriter');
+    if(!el)return;
+    const phrases=['آهنگساز . پرودیوسر . هنرمند مستقل','ساختن صدا، فضا و هویت','جایی که موسیقی احساس می‌شود','IDEN You Are Crazy'];
+    let pi=0,ci=0,del=false;
+    function t(){
+        const cur=phrases[pi];
+        if(!del){el.innerHTML=cur.substring(0,ci+1)+'<span class="cursor"></span>';ci++;if(ci===cur.length){setTimeout(()=>{del=true;t()},2000);return}}
+        else{el.innerHTML=cur.substring(0,ci-1)+'<span class="cursor"></span>';ci--;if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(t,500);return}}
+        setTimeout(t,del?40:80);
     }
-    
-    type();
+    t();
 }
 
 /* =====================================================
-   AUDIO PLAYER
+   COUNTER
 ===================================================== */
-function initAudioPlayer() {
-    const audio = document.getElementById('bgAudio');
-    const btn = document.getElementById('toggleAudio');
-    if (!audio || !btn) return;
-    audio.volume = 0.3;
-    
-    btn.addEventListener('click', () => {
-        if (audio.paused) {
-            audio.play().then(() => btn.classList.add('playing'))
-                .catch(() => showNotification('🔇', 'صدا', 'برای پخش صدا با سایت تعامل کن.'));
-        } else {
-            audio.pause();
-            btn.classList.remove('playing');
-        }
+function initCounter(){
+    document.querySelectorAll('.counter').forEach(c=>{
+        const t=parseInt(c.getAttribute('data-target'));
+        if(isNaN(t))return;
+        new IntersectionObserver(e=>{if(e[0].isIntersecting){let s=0;const i=setInterval(()=>{s+=Math.ceil(t/50);if(s>=t){s=t;clearInterval(i)}c.textContent=s},30)}},{threshold:.5}).observe(c);
     });
 }
 
 /* =====================================================
-   COUNTER ANIMATION
+   EASTER EGGS
 ===================================================== */
-function initCounterAnimation() {
-    const counters = document.querySelectorAll('.counter');
-    if (!counters.length) return;
+function initEasterEggs(){
+    const egg=document.getElementById('easterPopup');
+    if(!egg)return;
+    const show=(txt)=>{egg.querySelector('span').textContent=txt;egg.classList.add('active');setTimeout(()=>egg.classList.remove('active'),3000)};
     
-    const animate = (counter) => {
-        const target = parseInt(counter.getAttribute('data-target'), 10);
-        if (isNaN(target)) return;
-        const duration = 2000;
-        const start = performance.now();
-        const update = (time) => {
-            const elapsed = time - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 4);
-            counter.textContent = Math.floor(eased * target);
-            if (progress < 1) requestAnimationFrame(update);
-            else counter.textContent = target;
-        };
-        requestAnimationFrame(update);
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animate(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    counters.forEach(c => observer.observe(c));
-}
-
-/* =====================================================
-   🥚 ALL EASTER EGGS
-===================================================== */
-function initAllEasterEggs() {
-    // Easter egg #1: نقطه مخفی پایین چپ (۵ کلیک)
-    initDotEasterEgg();
-    
-    // Easter egg #2: تایپ "iden" با کیبورد
-    initKeyboardEasterEgg();
-    
-    // Easter egg #3: کد کونامی (↑↑↓↓←→←→BA)
-    initKonamiCode();
-    
-    // Easter egg #4: ۱۰ کلیک روی لوگو
-    initLogoEasterEgg();
-    
-    // Easter egg #5: دابل کلیک روی عکس پروفایل
-    initProfileEasterEgg();
-    
-    // Easter egg #6: نگه داشتن موس روی فوتتر ۵ ثانیه
-    initFooterEasterEgg();
-}
-
-// 🥚 Easter Egg #1: نقطه مخفی — ۵ کلیک سریع
-function initDotEasterEgg() {
-    const trigger = document.getElementById('easterEggTrigger');
-    const egg = document.getElementById('easterEgg');
-    if (!trigger || !egg) return;
-    
-    let clickCount = 0;
-    let resetTimer;
-    
-    trigger.addEventListener('click', () => {
-        clickCount++;
-        clearTimeout(resetTimer);
-        
-        if (clickCount >= 5) {
-            activateEasterEgg(egg, 'IDEN You Are Crazy');
-            clickCount = 0;
-        }
-        
-        resetTimer = setTimeout(() => { clickCount = 0; }, 2000);
-    });
-}
-
-// 🥚 Easter Egg #2: تایپ "iden" با کیبورد
-function initKeyboardEasterEgg() {
-    const egg = document.getElementById('easterEgg');
-    if (!egg) return;
-    
-    let keyBuffer = '';
-    
-    document.addEventListener('keypress', (e) => {
-        // Ignore if user is typing in an input
-        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-        
-        keyBuffer += e.key.toLowerCase();
-        if (keyBuffer.length > 4) keyBuffer = keyBuffer.slice(-4);
-        
-        if (keyBuffer === 'iden') {
-            activateEasterEgg(egg, '🖤 IDEN You Are Crazy 🖤');
-            keyBuffer = '';
-            showNotification('🥚', 'ایستر اگ پیدا شد!', 'تو راز رو کشف کردی...');
-        }
-        
-        // Bonus: "danyal" or "danial"
-        if (keyBuffer.length >= 6) {
-            const last6 = keyBuffer.slice(-6);
-            if (last6 === 'danyal' || last6 === 'danial') {
-                activateEasterEgg(egg, '✨ Daniyal Sobeii ✨');
-                keyBuffer = '';
-                showNotification('💎', 'اسم واقعی!', 'دانیال سبیعی — IDEN');
-            }
-        }
-        
-        // Bonus: "music"
-        if (keyBuffer === 'music' || keyBuffer.slice(-5) === 'music') {
-            document.body.style.transition = 'all 0.5s ease';
-            document.body.style.background = '#fff';
-            document.body.style.color = '#000';
-            setTimeout(() => {
-                document.body.style.background = '';
-                document.body.style.color = '';
-            }, 500);
-            showNotification('🎵', 'MUSIC!', 'برای یه لحظه همه چی روشن شد...');
-        }
-    });
-}
-
-// 🥚 Easter Egg #3: کد کونامی ↑↑↓↓←→←→ B A
-function initKonamiCode() {
-    const egg = document.getElementById('easterEgg');
-    if (!egg) return;
-    
-    const konamiCode = [
-        'ArrowUp', 'ArrowUp',
-        'ArrowDown', 'ArrowDown',
-        'ArrowLeft', 'ArrowRight',
-        'ArrowLeft', 'ArrowRight',
-        'b', 'a'
-    ];
-    
-    let konamiIndex = 0;
-    
-    document.addEventListener('keydown', (e) => {
-        if (e.key === konamiCode[konamiIndex]) {
-            konamiIndex++;
-            if (konamiIndex === konamiCode.length) {
-                // KONAMI ACTIVATED!
-                activateEasterEgg(egg, '🔥 KONAMI CODE ACTIVATED 🔥');
-                konamiIndex = 0;
-                
-                // Special effect: rainbow particles for 3 seconds
-                const canvas = document.getElementById('particlesCanvas');
-                if (canvas) {
-                    canvas.style.filter = 'hue-rotate(0deg)';
-                    let hue = 0;
-                    const rainbowInterval = setInterval(() => {
-                        hue = (hue + 10) % 360;
-                        canvas.style.filter = `hue-rotate(${hue}deg)`;
-                    }, 50);
-                    
-                    setTimeout(() => {
-                        clearInterval(rainbowInterval);
-                        canvas.style.filter = '';
-                    }, 3000);
-                }
-                
-                showNotification('🎮', 'کونامی!', 'کد مخفی فعال شد! 🌈');
-            }
-        } else {
-            konamiIndex = 0;
-        }
-    });
-}
-
-// 🥚 Easter Egg #4: ۱۰ کلیک روی لوگو
-function initLogoEasterEgg() {
-    const logo = document.querySelector('.logo');
-    const egg = document.getElementById('easterEgg');
-    if (!logo || !egg) return;
-    
-    let logoClicks = 0;
-    let logoReset;
-    
-    logo.addEventListener('click', (e) => {
-        e.preventDefault();
-        logoClicks++;
-        clearTimeout(logoReset);
-        
-        if (logoClicks === 5) {
-            showNotification('👀', 'کنجکاوی', 'داری نزدیک میشی...');
-        }
-        
-        if (logoClicks >= 10) {
-            activateEasterEgg(egg, '🌟 IDEN — World of Sound 🌟');
-            logoClicks = 0;
-            
-            // Glitch the whole page briefly
-            document.body.style.animation = 'none';
-            document.body.offsetHeight;
-            document.body.style.filter = 'invert(1)';
-            setTimeout(() => { document.body.style.filter = ''; }, 200);
-            setTimeout(() => { document.body.style.filter = 'invert(1)'; }, 400);
-            setTimeout(() => { document.body.style.filter = ''; }, 600);
-        }
-        
-        logoReset = setTimeout(() => { logoClicks = 0; }, 3000);
-    });
-}
-
-// 🥚 Easter Egg #5: دابل کلیک روی عکس پروفایل
-function initProfileEasterEgg() {
-    const profileImg = document.querySelector('.hero-image');
-    const egg = document.getElementById('easterEgg');
-    if (!profileImg || !egg) return;
-    
-    profileImg.addEventListener('dblclick', () => {
-        activateEasterEgg(egg, '📸 IDEN — Behind the Sound');
-        
-        // Rotate the portal rings faster briefly
-        const rings = document.querySelectorAll('.portal-ring');
-        rings.forEach(ring => {
-            ring.style.animationDuration = '2s';
-            setTimeout(() => { ring.style.animationDuration = ''; }, 2000);
-        });
-        
-        showNotification('📸', 'عکس مخفی!', 'پشت صحنهٔ دنیای صوتی IDEN');
-    });
-}
-
-// 🥚 Easter Egg #6: موس رو ۳ ثانیه روی فوتتر نگه دار
-function initFooterEasterEgg() {
-    const footer = document.querySelector('.footer');
-    const egg = document.getElementById('easterEgg');
-    if (!footer || !egg) return;
-    
-    let footerTimer;
-    
-    footer.addEventListener('mouseenter', () => {
-        footerTimer = setTimeout(() => {
-            activateEasterEgg(egg, '© IDEN — Since Day One');
-            showNotification('🕰️', 'راز فوتتر', 'از روز اول...');
-        }, 3000);
+    // Type "iden"
+    let buf='';
+    document.addEventListener('keypress',e=>{
+        if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+        buf+=e.key.toLowerCase();if(buf.length>4)buf=buf.slice(-4);
+        if(buf==='iden'){show('IDEN You Are Crazy');buf='';notif('🥚','ایستر اگ!','راز اول رو پیدا کردی')}
+        if(buf==='dany'||buf==='dani'){show('✨ Daniyal Sobeii ✨');buf='';notif('💎','اسم واقعی!','دانیال سبیعی')}
+        if(buf==='musi'){document.body.style.transition='all .5s';document.body.style.background='#fff';document.body.style.color='#000';setTimeout(()=>{document.body.style.background='';document.body.style.color=''},500);buf=''}
     });
     
-    footer.addEventListener('mouseleave', () => {
-        clearTimeout(footerTimer);
+    // Konami
+    const code=['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];let ki=0;
+    document.addEventListener('keydown',e=>{
+        if(e.key===code[ki]){ki++;if(ki===code.length){show('🎮 KONAMI!');ki=0;notif('🎮','کونامی!','کد مخفی فعال شد 🌈');let h=0;const r=setInterval(()=>{document.body.style.filter=`hue-rotate(${h}deg)`;h=(h+10)%360},50);setTimeout(()=>{clearInterval(r);document.body.style.filter=''},3000)}}
+        else ki=0;
     });
-}
-
-// Helper: Activate easter egg display
-function activateEasterEgg(element, text) {
-    if (!element) return;
-    element.querySelector('span').textContent = text;
-    element.classList.add('active');
-    setTimeout(() => element.classList.remove('active'), 3000);
-}
-
-/* =====================================================
-   SECRET CONSOLE MESSAGE
-===================================================== */
-function initSecretConsole() {
-    console.log(
-        '%c🖤 IDEN — Sonic Universe %c| %cOfficial Website',
-        'font-size:24px; font-weight:bold; color:#fff;',
-        '',
-        'font-size:14px; color:#999;'
-    );
-    console.log(
-        '%cاگر اینو می‌بینی، پس اهل فنی! %c😎%c\n%cIDEN You Are Crazy %c— این یه ایستر اگه.',
-        'color:#888;',
-        '',
-        '',
-        'color:#fff; font-weight:bold; font-size:16px;',
-        'color:#666;'
-    );
-    console.log(
-        '%cبیا باهم یه کار خفن بزنیم → %ccontact@idenmusic.com',
-        'color:#888;',
-        'color:#fff; text-decoration:underline;'
-    );
-}
-
-/* =====================================================
-   SOUND EFFECTS
-===================================================== */
-function initSoundEffects() {
-    const sfxHover = document.getElementById('sfxHover');
-    const sfxClick = document.getElementById('sfxClick');
-    if (!sfxHover || !sfxClick) return;
     
-    const interactiveEls = document.querySelectorAll('a, button, .expertise-card, .music-card, .social-link, .streaming-card');
+    // Double click hero image
+    document.querySelector('.hero-img')?.addEventListener('dblclick',()=>{show('📸 Behind the Sound');notif('📸','پشت صحنه','دنیای صوتی IDEN')});
     
-    interactiveEls.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            sfxHover.currentTime = 0;
-            sfxHover.volume = 0.2;
-            sfxHover.play().catch(() => {});
-        });
-        el.addEventListener('click', () => {
-            sfxClick.currentTime = 0;
-            sfxClick.volume = 0.3;
-            sfxClick.play().catch(() => {});
-        });
-    });
+    // 10 clicks logo
+    const logo=document.querySelector('.nav-logo');let lc=0,lt;
+    if(logo){logo.addEventListener('click',e=>{e.preventDefault();lc++;clearTimeout(lt);if(lc===5)notif('👀','کنجکاوی','داری نزدیک میشی...');if(lc>=10){show('🌟 IDEN — World of Sound');lc=0}lt=setTimeout(()=>lc=0,3000)})}
+    
+    // Console
+    console.log('%c🖤 IDEN %c| %cSonic Universe','font-size:22px;font-weight:bold;color:#fff','','color:#999');
+    console.log('%cIDEN You Are Crazy %c— Easter Egg','color:#fff;font-weight:bold','color:#666');
+    console.log('%c📧 contact@idenmusic.com','color:#888');
 }
