@@ -2219,3 +2219,446 @@ body {
         width: 60px;
     }
 }
+```css
+/* ============================================
+   IDEN — CLEAN RESPONSIVE SYSTEM
+   ============================================ */
+
+/* TABLET */
+@media (max-width: 968px) {
+
+    /* HERO */
+    .hero {
+        min-height: auto;
+        padding: 7rem 1rem 4rem;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        order: 0;
+    }
+
+    .hero-visual {
+        order: 1;
+    }
+
+    .hero-eyebrow {
+        justify-content: center;
+    }
+
+    .hero-title {
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-portal {
+        width: clamp(200px, 45vw, 300px);
+        height: clamp(200px, 45vw, 300px);
+        margin: 0 auto;
+    }
+
+    .hero-bg-orb {
+        width: 70vw;
+        height: 70vw;
+        max-width: 500px;
+        max-height: 500px;
+    }
+
+
+    /* ABOUT */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-morph {
+        max-width: 350px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-details {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* EXPERTISE */
+    .expertise-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* MUSIC */
+    .music-featured {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .vinyl-container {
+        width: 220px;
+        height: 260px;
+        margin: 0 auto;
+    }
+
+    .vinyl {
+        width: 220px;
+        height: 220px;
+    }
+
+    .music-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* SOCIAL */
+    .social-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* STREAMING */
+    .streaming-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    /* SECTIONS */
+    .section {
+        padding: 5rem 0;
+    }
+
+    .section-container {
+        padding: 0 1.25rem;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+
+    /* NAVBAR */
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar.scrolled {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo-main,
+    .logo-shadow {
+        font-size: 1.2rem;
+    }
+
+
+    /* NAV */
+    .nav-link {
+        font-size: 1.8rem;
+    }
+
+    .nav-overlay-content {
+        justify-content: center;
+    }
+
+    .nav-overlay-footer {
+        bottom: 2rem;
+    }
+
+
+    /* MARQUEE */
+    .marquee-wrap {
+        margin-top: 3rem;
+        padding: 1rem 0;
+    }
+
+    .marquee-track {
+        font-size: 0.75rem;
+        gap: 1rem;
+    }
+
+
+    /* FOOTER */
+    .footer {
+        padding: 2rem 1rem;
+    }
+
+
+    /* SCROLL INDICATOR */
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .section {
+        padding: 4rem 0;
+    }
+
+    .section-container {
+        padding: 0 1rem;
+    }
+
+    /* HERO */
+    .hero {
+        padding: 6rem 1rem 3rem;
+    }
+
+    .hero-container {
+        gap: 2.5rem;
+    }
+
+    .hero-title {
+        gap: clamp(0.15rem, 1.5vw, 0.4rem);
+        overflow: hidden;
+    }
+
+    .hero-char {
+        font-size: clamp(3.5rem, 15vw, 5rem);
+    }
+
+    .hero-description {
+        font-size: 0.95rem;
+    }
+
+    .hero-typewriter {
+        font-size: 0.9rem;
+    }
+
+
+    /* BUTTONS */
+    .btn-primary {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-audio {
+        width: 42px;
+        height: 42px;
+    }
+
+
+    /* EXPERTISE */
+    .expertise-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .expertise-card {
+        padding: 1.8rem 1.2rem;
+    }
+
+
+    /* SOCIAL */
+    .social-cards {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* MUSIC */
+    .vinyl-container {
+        width: 200px;
+        height: 240px;
+    }
+
+    .vinyl {
+        width: 200px;
+        height: 200px;
+    }
+
+    .vinyl-label {
+        width: 55px;
+        height: 55px;
+    }
+
+    .tonearm {
+        right: -10px;
+        top: -10px;
+    }
+
+
+    /* CONTACT */
+    .contact-block {
+        padding: 2.5rem 1rem;
+    }
+
+
+    /* NOTIFICATION */
+    .glass-notification {
+        max-width: calc(100vw - 2rem);
+        white-space: normal;
+        text-align: center;
+    }
+}
+
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+
+    .section {
+        padding: 3.5rem 0;
+    }
+
+    /* HERO */
+    .hero {
+        padding: 5.5rem 0.75rem 2.5rem;
+    }
+
+    .hero-char {
+        font-size: clamp(3.2rem, 15vw, 4.5rem);
+    }
+
+    .hero-title {
+        gap: 0.15rem;
+    }
+
+    .hero-eyebrow-text {
+        font-size: 0.6rem;
+        letter-spacing: 0.15em;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        line-height: 1.9;
+    }
+
+
+    /* PORTAL */
+    .hero-portal {
+        width: clamp(160px, 55vw, 200px);
+        height: clamp(160px, 55vw, 200px);
+    }
+
+
+    /* ABOUT */
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .about-stat {
+        padding: 1rem 0.5rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.6rem;
+    }
+
+    .about-heading {
+        font-size: 1.5rem;
+    }
+
+    .about-bio {
+        font-size: 0.9rem;
+    }
+
+    .about-floating-text {
+        font-size: 2rem;
+    }
+
+
+    /* VINYL */
+    .vinyl-container {
+        width: 180px;
+        height: 220px;
+    }
+
+    .vinyl {
+        width: 180px;
+        height: 180px;
+    }
+
+    .vinyl-label {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7rem;
+    }
+
+    .tonearm {
+        width: 80px;
+        height: 140px;
+        right: -5px;
+    }
+
+    .tonearm-arm {
+        height: 100px;
+    }
+
+    .tonearm-head {
+        top: 110px;
+    }
+
+
+    /* STREAMING */
+    .streaming-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.7rem;
+    }
+
+    .streaming-card {
+        padding: 1.5rem 0.7rem;
+    }
+
+
+    /* NAV */
+    .nav-link {
+        font-size: 1.3rem;
+    }
+
+    .nav-links-main li {
+        margin: 0.6rem 0;
+    }
+
+
+    /* PRELOADER */
+    .preloader-glitch {
+        font-size: 3rem;
+    }
+
+    .preloader-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .preloader-wave {
+        gap: 3px;
+    }
+
+    .preloader-wave span {
+        width: 3px;
+        height: 20px;
+    }
+
+    .preloader-progress {
+        width: 150px;
+    }
+
+
+    /* EASTER EGG */
+    .easter-egg-hidden {
+        max-width: calc(100vw - 2rem);
+        font-size: 0.7rem;
+        padding: 0.8rem 1rem;
+        text-align: center;
+    }
+}
+```
