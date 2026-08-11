@@ -1,8 +1,55 @@
-body {
-    background: red;
-}
-h1 {
-    color: white;
-    font-size: 50px;
-    text-align: center;
-}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:#000}
+body{font-family:'Vazirmatn',sans-serif;background:#000;color:#fff;line-height:1.7;overflow-x:hidden;direction:rtl;padding:20px}
+img{max-width:100%;height:auto}
+a{color:#fff;text-decoration:none}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:15px 20px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.8)}
+.nav-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;letter-spacing:5px}
+.nav-btn{display:block;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
+.nav-panel{display:none;position:fixed;inset:0;background:#000;z-index:999;padding:80px 20px}
+.nav-panel.active{display:flex;flex-direction:column;gap:20px}
+.nav-panel a{font-size:28px;font-weight:800}
+
+.hero{min-height:100vh;display:flex;align-items:center;padding:80px 20px 40px}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(48px,10vw,120px);font-weight:800;line-height:.9;margin-bottom:16px}
+.hero-title span{color:transparent;-webkit-text-stroke:1.5px #fff}
+.hero-desc{font-size:15px;color:#999;margin-bottom:24px;max-width:400px}
+.hero-btn{display:inline-block;padding:12px 24px;background:#fff;color:#000;border-radius:50px;font-weight:600;font-size:14px}
+.hero-img{width:200px;height:200px;object-fit:cover;border-radius:50%;margin:20px auto;display:block}
+
+.sec{padding:60px 20px}
+.sec-dark{background:#030303}
+.sec-title{font-size:clamp(28px,5vw,48px);font-weight:800;margin-bottom:30px}
+.outline{color:transparent;-webkit-text-stroke:1.5px #fff}
+
+.about-text{font-size:14px;color:#999;line-height:2;margin-bottom:24px}
+.about-stats{display:flex;gap:20px;flex-wrap:wrap}
+.about-stats div{text-align:center}
+.about-stats span{font-size:32px;font-weight:800;font-family:'Syne',sans-serif;display:block}
+.about-stats small{font-size:10px;color:#777}
+
+.exp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.exp-card{background:#000;padding:30px 20px}
+.exp-card h3{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:#fff}
+
+.music-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.m-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:24px 16px}
+.m-card h4{font-family:'Syne',sans-serif;font-size:14px;margin-top:6px}
+
+.social-grid{display:grid;grid-template-columns:1fr;gap:10px}
+.s-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:20px;display:flex;align-items:center;gap:12px}
+.s-card h3{font-family:'Syne',sans-serif;font-size:16px}
+.s-card span{font-size:12px;color:#999}
+
+.stream-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.str-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:24px 12px;text-align:center;display:block}
+.str-card h3{font-family:'Syne',sans-serif;font-size:14px;margin-bottom:4px}
+.str-card small{font-size:9px;color:#777}
+.str-card span{font-size:28px;display:block;margin-bottom:10px}
+
+.contact-box{text-align:center;padding:40px 20px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:20px}
+.contact-title{font-size:clamp(28px,5vw,44px);font-weight:800;margin-bottom:12px}
+
+.footer{display:flex;justify-content:space-between;padding:20px;border-top:1px solid rgba(255,255,255,.05);font-size:11px;color:#777;flex-wrap:wrap;gap:10px}
+.f-logo{font-family:'Syne',sans-serif;font-weight:800;color:#fff}
