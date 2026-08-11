@@ -2,214 +2,151 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="theme-color" content="#000000">
-    <title>IDEN — The Sonic Experience</title>
-    <meta name="description" content="IDEN — آهنگساز، پرودیوسر و هنرمند مستقل.">
-    <meta property="og:title" content="IDEN — The Sonic Experience">
-    <meta property="og:image" content="https://s6.uupload.ir/files/735356064_17954990835174889_5879476090595170337_n_923q.jpg">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IDEN — Sonic Universe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <canvas id="particleCanvas"></canvas>
-    <div class="vignette"></div>
-    <div class="scanlines"></div>
+    <canvas id="bg"></canvas>
+    <div class="overlay"></div>
     <div class="noise"></div>
-    <div class="bg-text">IDEN You Are Crazy</div>
 
-    <div class="notif-container" id="notifContainer"></div>
+    <div class="notif-box" id="notifBox"></div>
 
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-glitch" data-text="IDEN">IDEN</div>
-        <div class="preloader-eq"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="preloader-bar"><div class="preloader-fill" id="preloaderFill"></div></div>
-        <p class="preloader-sub">Entering the Sonic Universe</p>
+    <!-- PRELOADER -->
+    <div class="loader" id="loader">
+        <div class="loader-text">IDEN</div>
+        <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
     </div>
 
-    <!-- Easter Egg -->
-    <div class="easter-popup" id="easterPopup"><span></span></div>
+    <!-- EASTER EGG -->
+    <div class="egg" id="egg"><span></span></div>
 
-    <!-- Nav -->
-    <nav class="nav" id="nav">
-        <a href="#home" class="nav-logo">IDEN</a>
-        <button class="nav-btn" id="navBtn" aria-label="Menu"><span></span><span></span></button>
-        <div class="nav-panel" id="navPanel">
-            <div class="nav-panel-bg"></div>
-            <ul>
-                <li><a href="#about">درباره</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#music">موسیقی</a></li>
-                <li><a href="#journey">مسیر</a></li>
-                <li><a href="#social">ارتباط</a></li>
-                <li><a href="#streaming">استریم</a></li>
-                <li><a href="#contact">تماس</a></li>
-            </ul>
+    <!-- NAV -->
+    <div class="nav">
+        <a href="#home" class="nav-brand">IDEN</a>
+        <button class="nav-burger" id="navBurger">☰</button>
+        <div class="nav-menu" id="navMenu">
+            <a href="#about">درباره</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#music">موسیقی</a>
+            <a href="#journey">مسیر</a>
+            <a href="#social">ارتباط</a>
+            <a href="#streaming">استریم</a>
+            <a href="#contact">تماس</a>
         </div>
-    </nav>
+    </div>
 
-    <main>
-
-        <!-- Hero -->
-        <section class="hero" id="home">
-            <div class="hero-orb"></div>
-            <div class="hero-container">
-                <div class="hero-content">
-                    <p class="hero-eyebrow reveal">✦ Welcome to the sonic universe ✦</p>
-                    <h1 class="hero-title reveal">
-                        <span class="h-letter">I</span>
-                        <span class="h-letter">D</span>
-                        <span class="h-letter h-outline">E</span>
-                        <span class="h-letter h-outline">N</span>
-                    </h1>
-                    <div class="hero-typewriter reveal" id="typewriter"></div>
-                    <p class="hero-desc reveal">آهنگساز، پرودیوسر و هنرمند مستقل. جایی که صدا به هویت تبدیل می‌شود.</p>
-                    <a href="#music" class="hero-btn reveal"><span>کشف آثار</span><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 9h8M9 5l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
-                </div>
-                <div class="hero-visual reveal">
-                    <div class="hero-portal">
-                        <div class="portal-ring"></div>
-                        <div class="portal-ring portal-ring-2"></div>
-                        <img src="https://s6.uupload.ir/files/735356064_17954990835174889_5879476090595170337_n_923q.jpg" alt="IDEN" class="hero-img">
-                    </div>
-                </div>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <p class="hero-tag">✦ Welcome ✦</p>
+                <h1 class="hero-name">
+                    <span>I</span><span>D</span><span class="outline">E</span><span class="outline">N</span>
+                </h1>
+                <p class="hero-desc">آهنگساز، پرودیوسر و هنرمند مستقل. جایی که صدا به هویت تبدیل می‌شود.</p>
+                <a href="#music" class="btn">کشف آثار</a>
             </div>
-            <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
-        </section>
-
-        <!-- About -->
-        <section class="sec" id="about">
-            <div class="sec-inner">
-                <span class="sec-tag reveal">[ 01 ]</span>
-                <h2 class="sec-title reveal">صدایی که <span class="outline">هویت</span> دارد</h2>
-                <div class="about-grid">
-                    <div class="about-morph reveal"><div class="morph-inner"></div></div>
-                    <div class="reveal">
-                        <p class="about-label">ARTIST PROFILE</p>
-                        <p class="about-text"><strong>دانیال سبیعی</strong> با نام هنری <strong>IDEN</strong>. آهنگساز، پرودیوسر و هنرمند مستقل. متولد بندر ماهشهر، خوزستان. تمرکز بر ساخت INSTRUMENTALهای مستقل و طراحی صدا.</p>
-                        <div class="about-stats">
-                            <div><span class="counter" data-target="20">0</span><small>سال سن</small></div>
-                            <div><span>IDEN</span><small>Artist</small></div>
-                            <div><span>∞</span><small>ایده</small></div>
-                            <div><span>24/7</span><small>در حال خلق</small></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-img-box">
+                <img src="https://s6.uupload.ir/files/735356064_17954990835174889_5879476090595170337_n_923q.jpg" alt="IDEN" class="hero-img">
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Expertise -->
-        <section class="sec sec-dark" id="expertise">
-            <div class="sec-inner">
-                <span class="sec-tag reveal">[ 02 ]</span>
-                <h2 class="sec-title reveal">آنچه می‌سازم</h2>
-                <div class="exp-grid reveal">
-                    <div class="exp-card"><span>01</span><h3>MUSIC PRODUCTION</h3></div>
-                    <div class="exp-card"><span>02</span><h3>COMPOSITION</h3></div>
-                    <div class="exp-card"><span>03</span><h3>SOUND DESIGN</h3></div>
-                    <div class="exp-card"><span>04</span><h3>INSTRUMENTAL</h3></div>
-                    <div class="exp-card"><span>05</span><h3>MELODIC MUSIC</h3></div>
-                    <div class="exp-card"><span>06</span><h3>CREATIVE DIRECTION</h3></div>
-                </div>
+    <!-- ABOUT -->
+    <section class="sec" id="about">
+        <h2 class="title">صدایی که <span class="outline">هویت</span> دارد</h2>
+        <p class="about-text"><strong>دانیال سبیعی</strong> با نام هنری <strong>IDEN</strong>. آهنگساز، پرودیوسر و هنرمند مستقل. متولد بندر ماهشهر، خوزستان. تمرکز بر ساخت INSTRUMENTALهای مستقل و طراحی صدا.</p>
+        <div class="stats">
+            <div><span>20</span><small>سال سن</small></div>
+            <div><span>IDEN</span><small>Artist</small></div>
+            <div><span>∞</span><small>ایده</small></div>
+            <div><span>24/7</span><small>در حال خلق</small></div>
+        </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section class="sec dark" id="expertise">
+        <h2 class="title">آنچه می‌سازم</h2>
+        <div class="grid3">
+            <div class="card"><span>01</span><h3>MUSIC PRODUCTION</h3></div>
+            <div class="card"><span>02</span><h3>COMPOSITION</h3></div>
+            <div class="card"><span>03</span><h3>SOUND DESIGN</h3></div>
+            <div class="card"><span>04</span><h3>INSTRUMENTAL</h3></div>
+            <div class="card"><span>05</span><h3>MELODIC MUSIC</h3></div>
+            <div class="card"><span>06</span><h3>CREATIVE DIRECTION</h3></div>
+        </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section class="sec" id="music">
+        <h2 class="title">آخرین <span class="outline">آثار</span></h2>
+        <div class="music-box">
+            <div class="vinyl"><div class="vinyl-disc"></div><div class="vinyl-label">IDEN</div></div>
+            <div>
+                <span class="badge">Coming Soon</span>
+                <h3>FIRST INSTRUMENTAL</h3>
+                <p>اولین قطعه رسمی</p>
             </div>
-        </section>
+        </div>
+        <div class="grid3">
+            <div class="card"><span>01</span><h4>Coming Soon</h4></div>
+            <div class="card"><span>02</span><h4>Coming Soon</h4></div>
+            <div class="card"><span>03</span><h4>Coming Soon</h4></div>
+        </div>
+    </section>
 
-        <!-- Music -->
-        <section class="sec" id="music">
-            <div class="sec-inner">
-                <span class="sec-tag reveal">[ 03 ]</span>
-                <h2 class="sec-title reveal">آخرین <span class="outline">آثار</span></h2>
-                <div class="music-feat reveal">
-                    <div class="vinyl"><div class="vinyl-disc"></div><div class="vinyl-label">IDEN</div></div>
-                    <div>
-                        <span class="badge">Coming Soon</span>
-                        <h3>FIRST INSTRUMENTAL</h3>
-                        <p>اولین قطعه رسمی</p>
-                        <div class="eq"><span></span><span></span><span></span><span></span><span></span></div>
-                    </div>
-                </div>
-                <div class="music-grid reveal">
-                    <div class="m-card"><span>01</span><h4>Coming Soon</h4></div>
-                    <div class="m-card"><span>02</span><h4>Coming Soon</h4></div>
-                    <div class="m-card"><span>03</span><h4>Coming Soon</h4></div>
-                </div>
-            </div>
-        </section>
+    <!-- JOURNEY -->
+    <section class="sec dark" id="journey">
+        <h2 class="title">مسیر هنری</h2>
+        <div class="grid4">
+            <div><span>شروع</span><h3>کشف صدا</h3></div>
+            <div><span>تکامل</span><h3>پرورش سبک</h3></div>
+            <div><span>IDEN</span><h3>تولد برند</h3></div>
+            <div class="active"><span>اکنون</span><h3>فصل جدید</h3></div>
+        </div>
+    </section>
 
-        <!-- Journey -->
-        <section class="sec sec-dark" id="journey">
-            <div class="sec-inner">
-                <span class="sec-tag reveal">[ 04 ]</span>
-                <h2 class="sec-title reveal">مسیر هنری</h2>
-                <div class="journey reveal">
-                    <div><span>شروع</span><h3>کشف صدا</h3><p>جرقه اولیه</p></div>
-                    <div><span>تکامل</span><h3>پرورش سبک</h3><p>یافتن امضای صوتی</p></div>
-                    <div><span>IDEN</span><h3>تولد برند</h3><p>ادغام موسیقی و هویت</p></div>
-                    <div class="active"><span>اکنون</span><h3>فصل جدید</h3><p>آماده انتشار آثار</p></div>
-                </div>
-            </div>
-        </section>
+    <!-- SOCIAL -->
+    <section class="sec" id="social">
+        <h2 class="title">پیدا کن <span class="outline">منو</span></h2>
+        <div class="grid3">
+            <a href="https://instagram.com/yourfavartiist" class="card"><small>Social</small><h3>Instagram</h3><span>@yourfavartiist</span></a>
+            <a href="https://t.me/idenyouarecrazy" class="card"><small>Channel</small><h3>Telegram</h3><span>@idenyouarecrazy</span></a>
+            <a href="mailto:contact@idenmusic.com" class="card"><small>Email</small><h3>Contact</h3><span>contact@idenmusic.com</span></a>
+        </div>
+    </section>
 
-        <!-- Social -->
-        <section class="sec" id="social">
-            <div class="sec-inner">
-                <span class="sec-tag reveal">[ 05 ]</span>
-                <h2 class="sec-title reveal">پیدا کن <span class="outline">منو</span></h2>
-                <div class="social-grid reveal">
-                    <a href="https://instagram.com/yourfavartiist" target="_blank" rel="noopener" class="s-card">
-                        <svg width="24" height="24" viewBox="0 0 44 44" fill="none"><rect x="3" y="3" width="38" height="38" rx="11" stroke="currentColor" stroke-width="1.5"/><circle cx="22" cy="22" r="9" stroke="currentColor" stroke-width="1.5"/></svg>
-                        <div><small>Social</small><h3>Instagram</h3><span>@yourfavartiist</span></div>
-                    </a>
-                    <a href="https://t.me/idenyouarecrazy" target="_blank" rel="noopener" class="s-card">
-                        <svg width="24" height="24" viewBox="0 0 44 44" fill="none"><circle cx="22" cy="22" r="19" stroke="currentColor" stroke-width="1.5"/><path d="M13 20l6 7 12-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                        <div><small>Channel</small><h3>Telegram</h3><span>@idenyouarecrazy</span></div>
-                    </a>
-                    <a href="mailto:contact@idenmusic.com" class="s-card">
-                        <svg width="24" height="24" viewBox="0 0 44 44" fill="none"><rect x="5" y="9" width="34" height="26" rx="5" stroke="currentColor" stroke-width="1.5"/><path d="M5 13l17 13 17-13" stroke="currentColor" stroke-width="1.5"/></svg>
-                        <div><small>Email</small><h3>Contact</h3><span>contact@idenmusic.com</span></div>
-                    </a>
-                </div>
-            </div>
-        </section>
+    <!-- STREAMING -->
+    <section class="sec dark" id="streaming">
+        <h2 class="title">پلتفرم‌های <span class="outline">استریم</span></h2>
+        <div class="grid4">
+            <div class="card"><span>🎵</span><h3>Spotify</h3><small>Coming Soon</small></div>
+            <div class="card"><span>🎧</span><h3>Apple Music</h3><small>Coming Soon</small></div>
+            <div class="card"><span>☁️</span><h3>SoundCloud</h3><small>Coming Soon</small></div>
+            <div class="card"><span>🎶</span><h3>Deezer</h3><small>Coming Soon</small></div>
+        </div>
+    </section>
 
-        <!-- Streaming -->
-        <section class="sec sec-dark" id="streaming">
-            <div class="sec-inner">
-                <span class="sec-tag reveal">[ 06 ]</span>
-                <h2 class="sec-title reveal">پلتفرم‌های <span class="outline">استریم</span></h2>
-                <div class="stream-grid reveal">
-                    <a href="#" class="str-card"><span>🎵</span><h3>Spotify</h3><small>Coming Soon</small></a>
-                    <a href="#" class="str-card"><span>🎧</span><h3>Apple Music</h3><small>Coming Soon</small></a>
-                    <a href="#" class="str-card"><span>☁️</span><h3>SoundCloud</h3><small>Coming Soon</small></a>
-                    <a href="#" class="str-card"><span>🎶</span><h3>Deezer</h3><small>Coming Soon</small></a>
-                </div>
-            </div>
-        </section>
+    <!-- CONTACT -->
+    <section class="sec" id="contact">
+        <h2 class="title">آماده‌ای برای <span class="outline">همکاری؟</span></h2>
+        <p class="contact-text">برای پروژه‌های موسیقی و همکاری خلاقانه</p>
+        <a href="mailto:contact@idenmusic.com" class="btn">contact@idenmusic.com</a>
+    </section>
 
-        <!-- Contact -->
-        <section class="sec" id="contact">
-            <div class="sec-inner contact-box reveal">
-                <span class="sec-tag">[ 07 ]</span>
-                <h2 class="contact-title">آماده‌ای برای <span class="outline">همکاری؟</span></h2>
-                <p>برای پروژه‌های موسیقی و همکاری خلاقانه</p>
-                <a href="mailto:contact@idenmusic.com" class="hero-btn">contact@idenmusic.com</a>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer">
-        <span class="f-logo">IDEN</span>
+    <!-- FOOTER -->
+    <div class="footer">
+        <span class="f-brand">IDEN</span>
         <span>MUSIC · ART · IDENTITY</span>
         <span>© 2024</span>
-    </footer>
+    </div>
 
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 </html>
