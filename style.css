@@ -363,25 +363,25 @@ body {
 
 /* ========== ABOUT LOGO ========== */
 .about-logo {
-    position: relative; z-index: 1; width: 25%; height: auto; max-width: 80px;
+    position: relative; z-index: 1; width: 15%; height: auto; max-width: 50px;
     animation: floatLogo 4s ease-in-out infinite;
-    filter: brightness(1.05) drop-shadow(0 0 25px rgba(196, 30, 58, 0.5));
+    filter: brightness(3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
     transition: all 0.5s var(--ease-out-expo);
 }
 .about-logo:hover {
-    filter: brightness(1.2) drop-shadow(0 0 40px rgba(196, 30, 58, 0.8));
-    transform: scale(1.08);
+    filter: brightness(3.5) drop-shadow(0 0 35px rgba(255, 255, 255, 1));
+    transform: scale(1.1);
 }
 @keyframes floatLogo {
-    0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}
+    0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}
 }
 
 @media (max-width: 968px) {
-    .about-logo { width: 22%; max-width: 65px; }
+    .about-logo { width: 13%; max-width: 40px; }
 }
 
 @media (max-width: 480px) {
-    .about-logo { width: 20%; max-width: 50px; }
+    .about-logo { width: 12%; max-width: 35px; }
 }
 
 .about-label { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--red); display: block; margin-bottom: 1rem; }
