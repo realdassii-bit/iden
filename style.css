@@ -1706,4 +1706,516 @@ body {
     .vinyl { width: 200px; height: 200px; }
     .vinyl-label { width: 55px; height: 55px; font-size: 0.8rem; }
     .contact-block { padding: 2.5rem 1rem; }
+}/* ============================================
+   📱 RESPONSIVE — FULLY FIXED FOR MOBILE
+   ============================================ */
+
+@media (max-width: 968px) {
+    /* Hero */
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero-content {
+        order: 1;
+    }
+
+    .hero-visual {
+        order: 0;
+    }
+
+    .hero-eyebrow {
+        justify-content: center;
+    }
+
+    .hero-title {
+        justify-content: center;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    /* Hero Visual — smaller portal */
+    .hero-portal {
+        width: clamp(180px, 50vw, 250px);
+        height: clamp(180px, 50vw, 250px);
+        margin: 0 auto;
+    }
+
+    .hero-bg-orb {
+        width: 500px;
+        height: 500px;
+    }
+
+    /* About */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .about-morph {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .about-floating-text {
+        font-size: 2.5rem;
+    }
+
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .about-details {
+        grid-template-columns: 1fr;
+    }
+
+    /* Expertise */
+    .expertise-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .expertise-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Music — Vinyl */
+    .music-featured {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .vinyl-container {
+        width: 220px;
+        height: 260px;
+        margin: 0 auto;
+    }
+
+    .vinyl {
+        width: 220px;
+        height: 220px;
+    }
+
+    .vinyl-label {
+        width: 60px;
+        height: 60px;
+        font-size: 0.8rem;
+    }
+
+    .tonearm {
+        top: -15px;
+        right: -25px;
+        width: 100px;
+        height: 170px;
+    }
+
+    .tonearm-arm {
+        height: 120px;
+    }
+
+    .tonearm-head {
+        top: 130px;
+    }
+
+    .music-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    /* Journey */
+    .journey {
+        padding: 1rem 0;
+    }
+
+    .journey-line {
+        right: 10px;
+    }
+
+    .journey-node {
+        padding-right: 40px;
+        margin-bottom: 2rem;
+    }
+
+    .node-marker {
+        right: 2px;
+        width: 12px;
+        height: 12px;
+    }
+
+    /* Social */
+    .social-cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .social-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Streaming */
+    .streaming-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .streaming-card {
+        padding: 2rem 1rem;
+    }
+
+    /* Contact */
+    .contact-block {
+        padding: 2.5rem 1rem;
+    }
+
+    /* Sections */
+    .section {
+        padding: 4rem 0;
+    }
+
+    .section-container {
+        padding: 0 1rem;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+    .section-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar.scrolled {
+        padding: 0.8rem 1rem;
+    }
+
+    .logo-main,
+    .logo-shadow {
+        font-size: 1.2rem;
+    }
+
+    /* Hero padding */
+    .hero {
+        padding: 5rem 1rem 2rem;
+        min-height: auto;
+        padding-top: 7rem;
+    }
+
+    /* Marquee */
+    .marquee-wrap {
+        margin-top: 3rem;
+        padding: 1rem 0;
+    }
+
+    .marquee-track {
+        font-size: 0.75rem;
+        gap: 1rem;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+        bottom: 1rem;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 2rem 1rem;
+    }
+
+    /* Nav overlay links */
+    .nav-link {
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================
+   📱 SMALL MOBILE ( < 480px )
+   ============================================ */
+@media (max-width: 480px) {
+    /* Hero chars */
+    .hero-char {
+        font-size: clamp(3.5rem, 15vw, 5rem);
+    }
+
+    .hero-char-outline {
+        -webkit-text-stroke: 1.5px #fff;
+    }
+
+    .hero-char-outline:hover {
+        -webkit-text-stroke: 1.5px var(--red);
+    }
+
+    .hero-eyebrow-text {
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+    }
+
+    .hero-typewriter {
+        font-size: 0.9rem;
+    }
+
+    /* Buttons */
+    .btn-primary {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.8rem;
+    }
+
+    .btn-audio {
+        width: 40px;
+        height: 40px;
+        font-size: 0.7rem;
+    }
+
+    .btn-lg {
+        padding: 0.9rem 1.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Portal */
+    .hero-portal {
+        width: clamp(150px, 55vw, 200px);
+        height: clamp(150px, 55vw, 200px);
+    }
+
+    /* About */
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .about-stat {
+        padding: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+    }
+
+    .about-heading {
+        font-size: 1.5rem;
+    }
+
+    .about-bio {
+        font-size: 0.9rem;
+    }
+
+    .about-floating-text {
+        font-size: 2rem;
+    }
+
+    /* Expertise */
+    .expertise-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .expertise-card {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .expertise-card h3 {
+        font-size: 0.9rem;
+    }
+
+    .expertise-card p {
+        font-size: 0.8rem;
+    }
+
+    .card-icon {
+        font-size: 2rem;
+    }
+
+    /* Vinyl */
+    .vinyl-container {
+        width: 180px;
+        height: 220px;
+    }
+
+    .vinyl {
+        width: 180px;
+        height: 180px;
+    }
+
+    .vinyl-label {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7rem;
+    }
+
+    .tonearm {
+        width: 80px;
+        height: 140px;
+        top: -10px;
+        right: -20px;
+    }
+
+    .tonearm-arm {
+        height: 100px;
+    }
+
+    .tonearm-head {
+        top: 110px;
+    }
+
+    .featured-info h3 {
+        font-size: 1.2rem;
+    }
+
+    .equalizer span {
+        width: 3px;
+    }
+
+    /* Journey */
+    .journey-node {
+        padding-right: 30px;
+        margin-bottom: 1.5rem;
+    }
+
+    .journey-node h3 {
+        font-size: 1.1rem;
+    }
+
+    .journey-node p {
+        font-size: 0.8rem;
+    }
+
+    .node-marker {
+        right: 0;
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Social */
+    .social-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .social-card-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .social-card-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Streaming */
+    .streaming-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+    }
+
+    .streaming-card {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .streaming-card h3 {
+        font-size: 0.85rem;
+    }
+
+    .streaming-card-icon svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Contact */
+    .contact-block {
+        padding: 2rem 1rem;
+    }
+
+    .contact-title {
+        font-size: 1.5rem;
+    }
+
+    .contact-text {
+        font-size: 0.85rem;
+    }
+
+    /* Nav overlay */
+    .nav-link {
+        font-size: 1.3rem;
+    }
+
+    .nav-links-main li {
+        margin: 0.6rem 0;
+    }
+
+    /* Preloader */
+    .preloader-glitch {
+        font-size: 3rem;
+    }
+
+    .preloader-subtitle {
+        font-size: 0.7rem;
+    }
+
+    .preloader-wave span {
+        width: 3px;
+        height: 20px;
+    }
+
+    /* Notification */
+    .glass-notification {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.7rem;
+    }
+
+    /* Easter egg */
+    .easter-egg-hidden {
+        font-size: 0.7rem;
+        padding: 0.8rem 1.5rem;
+    }
+}
+
+/* ============================================
+   📱 FIX NAV OVERLAY ON MOBILE
+   ============================================ */
+@media (max-width: 968px) {
+    .nav-overlay-content {
+        justify-content: center;
+    }
+
+    .nav-overlay-footer {
+        bottom: 2rem;
+        font-size: 0.6rem;
+    }
+}
+
+/* ============================================
+   📱 FIX PRELOADER ON MOBILE
+   ============================================ */
+@media (max-width: 480px) {
+    .preloader-wave {
+        gap: 3px;
+    }
+
+    .preloader-wave span {
+        width: 3px;
+        height: 20px;
+    }
+
+    .preloader-progress {
+        width: 150px;
+    }
+
+    .preloader-line {
+        width: 60px;
+    }
 }
