@@ -1,7 +1,7 @@
 /* ============================================
    IDEN — SONIC UNIVERSE
    Luxury Dark Theme — Black & Red
-   Full Animation Suite — FINAL v3.0
+   Full Animation Suite — FINAL CLEAN v4.0
    ============================================ */
 
 :root {
@@ -345,7 +345,10 @@ body {
 
 /* ========== ABOUT ========== */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-.about-morph { position: relative; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+.about-morph {
+    position: relative; aspect-ratio: 1; display: flex;
+    align-items: center; justify-content: center; overflow: hidden;
+}
 .morph-shape {
     position: absolute; width: 100%; height: 100%;
     background: linear-gradient(135deg, rgba(196,30,58,0.15) 0%, rgba(10,10,10,1) 50%, rgba(200,164,92,0.1) 100%);
@@ -361,50 +364,21 @@ body {
     100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}
 }
 
+/* About Floating Text */
 .about-floating-text {
     position: relative; z-index: 1;
     font-size: 3.5rem; font-weight: 900;
     color: #fff;
     text-shadow: 0 0 30px rgba(196, 30, 58, 0.6), 0 0 60px rgba(200, 164, 92, 0.3);
     animation: floatText 4s ease-in-out infinite;
+    transition: all 0.5s var(--ease-out-expo);
 }
 .about-floating-text:hover {
-    text-shadow: 0 0 50px rgba(196, 30, 58, 0.9);
+    text-shadow: 0 0 50px rgba(196, 30, 58, 0.9), 0 0 80px rgba(200, 164, 92, 0.5);
     transform: scale(1.1);
 }
 @keyframes floatText {
     0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}
-}
-@media (max-width: 968px) { .about-floating-text { font-size: 2.5rem; } }
-@media (max-width: 480px) { .about-floating-text { font-size: 2rem; } }
-.about-logo {
-    width: 100%;
-    height: auto;
-    filter: brightness(10) contrast(1.5);
-    transition: all 0.5s var(--ease-out-expo);
-}
-
-.about-logo-wrap:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: scale(1.1);
-    box-shadow: 0 0 40px rgba(196, 30, 58, 0.4);
-}
-
-.about-logo-wrap:hover .about-logo {
-    filter: brightness(12) contrast(1.8);
-}
-
-@keyframes floatLogo {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-@media (max-width: 968px) {
-    .about-logo-wrap { width: 22%; max-width: 70px; }
-}
-
-@media (max-width: 480px) {
-    .about-logo-wrap { width: 20%; max-width: 55px; }
 }
 
 .about-label { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--red); display: block; margin-bottom: 1rem; }
@@ -560,7 +534,7 @@ body {
     .hero-bg-orb { width: 500px; height: 500px; }
     .about-grid { grid-template-columns: 1fr; gap: 3rem; }
     .about-morph { max-width: 350px; margin: 0 auto; }
-    .about-logo { width: 50%; max-width: 150px; }
+    .about-floating-text { font-size: 2.5rem; }
     .about-stats { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
     .about-details { grid-template-columns: 1fr; }
     .expertise-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -615,7 +589,7 @@ body {
     .stat-label { font-size: 0.65rem; }
     .about-heading { font-size: 1.5rem; }
     .about-bio { font-size: 0.9rem; }
-    .about-logo { width: 45%; max-width: 120px; }
+    .about-floating-text { font-size: 2rem; }
     .expertise-grid { grid-template-columns: 1fr; gap: 0.8rem; }
     .expertise-card { padding: 1.8rem 1.2rem; }
     .expertise-card h3 { font-size: 0.9rem; }
