@@ -362,26 +362,52 @@ body {
 }
 
 /* ========== ABOUT LOGO ========== */
-.about-logo {
-    position: relative; z-index: 1; width: 15%; height: auto; max-width: 50px;
+.about-logo-wrap {
+    position: relative;
+    z-index: 1;
+    width: 25%;
+    max-width: 90px;
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12%;
     animation: floatLogo 4s ease-in-out infinite;
-    filter: brightness(3) drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: all 0.5s var(--ease-out-expo);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.about-logo {
+    width: 100%;
+    height: auto;
+    filter: brightness(10) contrast(1.5);
     transition: all 0.5s var(--ease-out-expo);
 }
-.about-logo:hover {
-    filter: brightness(3.5) drop-shadow(0 0 35px rgba(255, 255, 255, 1));
+
+.about-logo-wrap:hover {
+    background: rgba(255, 255, 255, 0.15);
     transform: scale(1.1);
+    box-shadow: 0 0 40px rgba(196, 30, 58, 0.4);
 }
+
+.about-logo-wrap:hover .about-logo {
+    filter: brightness(12) contrast(1.8);
+}
+
 @keyframes floatLogo {
-    0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 @media (max-width: 968px) {
-    .about-logo { width: 13%; max-width: 40px; }
+    .about-logo-wrap { width: 22%; max-width: 70px; }
 }
 
 @media (max-width: 480px) {
-    .about-logo { width: 12%; max-width: 35px; }
+    .about-logo-wrap { width: 20%; max-width: 55px; }
 }
 
 .about-label { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--red); display: block; margin-bottom: 1rem; }
