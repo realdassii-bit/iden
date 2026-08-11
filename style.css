@@ -363,7 +363,7 @@ body {
 
 /* ========== ABOUT LOGO ========== */
 .about-logo {
-    position: relative; z-index: 1; width: 55%; height: auto; max-width: 180px;
+    position: relative; z-index: 1; width: 25%; height: auto; max-width: 80px;
     animation: floatLogo 4s ease-in-out infinite;
     filter: brightness(1.05) drop-shadow(0 0 25px rgba(196, 30, 58, 0.5));
     transition: all 0.5s var(--ease-out-expo);
@@ -374,6 +374,14 @@ body {
 }
 @keyframes floatLogo {
     0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}
+}
+
+@media (max-width: 968px) {
+    .about-logo { width: 22%; max-width: 65px; }
+}
+
+@media (max-width: 480px) {
+    .about-logo { width: 20%; max-width: 50px; }
 }
 
 .about-label { font-size: 0.65rem; letter-spacing: 0.4em; color: var(--red); display: block; margin-bottom: 1rem; }
