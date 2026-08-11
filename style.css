@@ -627,3 +627,34 @@ body {
     .glass-notification { padding: 0.8rem 1.5rem; font-size: 0.7rem; }
     .easter-egg-hidden { font-size: 0.7rem; padding: 0.8rem 1.5rem; }
 }
+/* ========== ABOUT FLOATING TEXT ========== */
+.about-floating-text {
+    position: relative;
+    z-index: 1;
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-family: 'IranNastaliq', 'Noto Nastaliq Urdu', serif !important;
+    font-size: 4rem;
+    font-weight: 400;
+    color: #ffffff !important;
+    text-shadow: 0 0 30px rgba(196, 30, 58, 0.6), 0 0 60px rgba(200, 164, 92, 0.3);
+    animation: floatText 4s ease-in-out infinite;
+    transition: all 0.5s var(--ease-out-expo);
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.about-floating-text:hover {
+    text-shadow: 0 0 50px rgba(196, 30, 58, 0.9), 0 0 80px rgba(200, 164, 92, 0.5);
+    transform: scale(1.1);
+}
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+@media (max-width: 968px) {
+    .about-floating-text { font-size: 2.8rem !important; }
+}
+@media (max-width: 480px) {
+    .about-floating-text { font-size: 2.2rem !important; }
+}
