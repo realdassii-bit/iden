@@ -571,4 +571,178 @@ body {
         height: 80px;
         margin: 0 auto;
     }
+}/* ========== MOBILE FULL FIX ========== */
+@media (max-width: 768px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .hero-content { order: 1; }
+    .hero-visual { order: 0; }
+    .hero-eyebrow { justify-content: center; }
+    .hero-title { justify-content: center; }
+    .hero-actions { justify-content: center; }
+    .hero-portal {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+    .hero-char {
+        font-size: 3.5rem;
+    }
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .about-morph {
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    .about-floating-text {
+        font-size: 2.5rem;
+    }
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+    .about-stat {
+        padding: 1rem 0.5rem;
+    }
+    .stat-number {
+        font-size: 1.3rem;
+    }
+    .stat-label {
+        font-size: 0.6rem;
+    }
+    .about-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .expertise-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    .expertise-card {
+        padding: 1.5rem;
+    }
+    
+    .music-featured {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .featured-track-cover {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+    .music-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .social-cards {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .streaming-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    .streaming-card {
+        padding: 1.5rem 0.8rem;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    .section-container {
+        padding: 0 0.8rem;
+    }
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .navbar {
+        padding: 0.8rem;
+    }
+    .logo-main, .logo-shadow {
+        font-size: 1rem;
+    }
+    
+    .contact-block {
+        padding: 2rem 1rem;
+    }
+    .contact-title {
+        font-size: 1.5rem;
+    }
+    
+    .footer {
+        padding: 2rem 1rem;
+    }
+    
+    /* پاپ‌آپ */
+    .platform-popup-content {
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 1.5rem 1rem;
+        width: 95%;
+    }
+    .platform-buttons {
+        gap: 0.6rem;
+    }
+    .platform-btn {
+        padding: 0.7rem 1rem;
+    }
+    
+    /* پلیر */
+    .player-layout {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    .player-mini-cover {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto;
+    }
+    .luxury-player {
+        padding: 0.8rem;
+    }
+    .visualizer {
+        height: 30px;
+        gap: 2px;
+    }
+    .visualizer span {
+        width: 2px;
+    }
+    .player-controls {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+    .player-play {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+    .player-mute {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    .player-progress-wrap {
+        order: 3;
+        width: 100%;
+    }
+    .download-btn {
+        font-size: 0.8rem;
+        padding: 0.7rem;
+    }
 }
