@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <canvas id="particlesCanvas"></canvas>
 
     <div class="vignette"></div>
@@ -67,14 +68,14 @@
                 <div class="nav-overlay-bg"></div>
                 <nav class="nav-overlay-content">
                     <ul class="nav-links-main">
-                        <li><a href="#home" class="nav-link" data-text="HOME">خانه</a></li>
-                        <li><a href="#about" class="nav-link" data-text="ABOUT">درباره</a></li>
-                        <li><a href="#expertise" class="nav-link" data-text="EXPERTISE">EXPERTISE</a></li>
-                        <li><a href="#music" class="nav-link" data-text="MUSIC">موسیقی</a></li>
-                        <li><a href="#journey" class="nav-link" data-text="JOURNEY">مسیر</a></li>
-                        <li><a href="#social" class="nav-link" data-text="SOCIAL">ارتباط</a></li>
-                        <li><a href="#streaming" class="nav-link" data-text="STREAMING">استریم</a></li>
-                        <li><a href="#contact" class="nav-link" data-text="CONTACT">تماس</a></li>
+                        <li><a href="#home" class="nav-link">خانه</a></li>
+                        <li><a href="#about" class="nav-link">درباره</a></li>
+                        <li><a href="#expertise" class="nav-link">EXPERTISE</a></li>
+                        <li><a href="#music" class="nav-link">موسیقی</a></li>
+                        <li><a href="#journey" class="nav-link">مسیر</a></li>
+                        <li><a href="#social" class="nav-link">ارتباط</a></li>
+                        <li><a href="#streaming" class="nav-link">استریم</a></li>
+                        <li><a href="#contact" class="nav-link">تماس</a></li>
                     </ul>
                     <div class="nav-overlay-footer">
                         <span>MUSIC · ART · IDENTITY</span>
@@ -90,6 +91,19 @@
         <section class="hero" id="home">
             <div class="hero-bg-orb"></div>
             <div class="hero-container">
+                <div class="hero-visual">
+                    <div class="hero-portal">
+                        <div class="portal-ring portal-ring-1"></div>
+                        <div class="portal-ring portal-ring-2"></div>
+                        <div class="portal-ring portal-ring-3"></div>
+                        <div class="portal-ring portal-ring-4"></div>
+                        <div class="hero-image-wrap">
+                            <img class="hero-image" src="https://i.ibb.co/4ZLs9FfW/Profile.jpg" alt="IDEN" width="400" height="400" loading="eager">
+                            <div class="hero-image-glitch"></div>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="hero-content">
                     <div class="hero-eyebrow">
                         <span class="hero-eyebrow-line"></span>
@@ -120,19 +134,6 @@
                         <button class="btn btn-audio" id="toggleAudio" aria-label="پخش/توقف صدا">
                             <span>▶</span>
                         </button>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="hero-portal">
-                        <div class="portal-ring portal-ring-1"></div>
-                        <div class="portal-ring portal-ring-2"></div>
-                        <div class="portal-ring portal-ring-3"></div>
-                        <div class="portal-ring portal-ring-4"></div>
-                        <div class="hero-image-wrap">
-                            <img class="hero-image" src="https://i.ibb.co/4ZLs9FfW/Profile.jpg" alt="IDEN" width="400" height="400" loading="eager">
-                            <div class="hero-image-glitch"></div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -166,7 +167,7 @@
                         
                         <div class="about-bio">
                             <p><strong>دانیال سبیعی</strong> با نام هنری <strong>IDEN</strong>، آهنگساز، پرودیوسر و هنرمند مستقلی است که موسیقی را به عنوان <em>زبان روح</em> برگزیده.</p>
-                            <p>تمرکز اصلی او بر ساخت <strong>اینسترومنتال</strong>های مستقل، تجربه ژانرهای مختلف، طراحی صدا و خلق فضاهای شنیداری‌ست که فراتر از مرزهای مرسوم موسیقی حرکت می‌کنند.</p>
+                            <p>تمرکز اصلی او بر ساخت <strong>اینسترومنتال</strong>های مستقل، تجربه ژانرهای مختلف، طراحی صدا و خلق فضاهای شنیداری‌ست.</p>
                         </div>
 
                         <div class="about-stats">
@@ -272,94 +273,31 @@
                 </div>
 
                 <div class="music-grid reveal">
-                    <div class="music-card track-card" data-track="NAME_TRACK_2">
+                    <div class="music-card track-card" data-track="TRACK 2">
                         <div class="music-card-cover">
                             <img src="LINK_COVER_2" alt="Track 2">
                             <div class="music-card-overlay">▶</div>
                         </div>
                         <span class="music-card-num">02</span>
-                        <h4>NAME_TRACK_2</h4>
+                        <h4>TRACK 2</h4>
                         <span class="music-card-tag">INSTRUMENTAL</span>
                     </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_3">
+                    <div class="music-card track-card" data-track="TRACK 3">
                         <div class="music-card-cover">
                             <img src="LINK_COVER_3" alt="Track 3">
                             <div class="music-card-overlay">▶</div>
                         </div>
                         <span class="music-card-num">03</span>
-                        <h4>NAME_TRACK_3</h4>
+                        <h4>TRACK 3</h4>
                         <span class="music-card-tag">INSTRUMENTAL</span>
                     </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_4">
+                    <div class="music-card track-card" data-track="TRACK 4">
                         <div class="music-card-cover">
                             <img src="LINK_COVER_4" alt="Track 4">
                             <div class="music-card-overlay">▶</div>
                         </div>
                         <span class="music-card-num">04</span>
-                        <h4>NAME_TRACK_4</h4>
-                        <span class="music-card-tag">INSTRUMENTAL</span>
-                    </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_5">
-                        <div class="music-card-cover">
-                            <img src="LINK_COVER_5" alt="Track 5">
-                            <div class="music-card-overlay">▶</div>
-                        </div>
-                        <span class="music-card-num">05</span>
-                        <h4>NAME_TRACK_5</h4>
-                        <span class="music-card-tag">INSTRUMENTAL</span>
-                    </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_6">
-                        <div class="music-card-cover">
-                            <img src="LINK_COVER_6" alt="Track 6">
-                            <div class="music-card-overlay">▶</div>
-                        </div>
-                        <span class="music-card-num">06</span>
-                        <h4>NAME_TRACK_6</h4>
-                        <span class="music-card-tag">INSTRUMENTAL</span>
-                    </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_7">
-                        <div class="music-card-cover">
-                            <img src="LINK_COVER_7" alt="Track 7">
-                            <div class="music-card-overlay">▶</div>
-                        </div>
-                        <span class="music-card-num">07</span>
-                        <h4>NAME_TRACK_7</h4>
-                        <span class="music-card-tag">INSTRUMENTAL</span>
-                    </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_8">
-                        <div class="music-card-cover">
-                            <img src="LINK_COVER_8" alt="Track 8">
-                            <div class="music-card-overlay">▶</div>
-                        </div>
-                        <span class="music-card-num">08</span>
-                        <h4>NAME_TRACK_8</h4>
-                        <span class="music-card-tag">INSTRUMENTAL</span>
-                    </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_9">
-                        <div class="music-card-cover">
-                            <img src="LINK_COVER_9" alt="Track 9">
-                            <div class="music-card-overlay">▶</div>
-                        </div>
-                        <span class="music-card-num">09</span>
-                        <h4>NAME_TRACK_9</h4>
-                        <span class="music-card-tag">INSTRUMENTAL</span>
-                    </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_10">
-                        <div class="music-card-cover">
-                            <img src="LINK_COVER_10" alt="Track 10">
-                            <div class="music-card-overlay">▶</div>
-                        </div>
-                        <span class="music-card-num">10</span>
-                        <h4>NAME_TRACK_10</h4>
-                        <span class="music-card-tag">INSTRUMENTAL</span>
-                    </div>
-                    <div class="music-card track-card" data-track="NAME_TRACK_11">
-                        <div class="music-card-cover">
-                            <img src="LINK_COVER_11" alt="Track 11">
-                            <div class="music-card-overlay">▶</div>
-                        </div>
-                        <span class="music-card-num">11</span>
-                        <h4>NAME_TRACK_11</h4>
+                        <h4>TRACK 4</h4>
                         <span class="music-card-tag">INSTRUMENTAL</span>
                     </div>
                 </div>
@@ -472,33 +410,18 @@
 
                 <div class="streaming-grid reveal">
                     <a href="#" class="streaming-card">
-                        <div class="streaming-card-icon">
-                            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02z"/></svg>
-                        </div>
                         <h3>Spotify</h3>
                         <span class="streaming-status">به زودی</span>
                     </a>
-
                     <a href="#" class="streaming-card">
-                        <div class="streaming-card-icon">
-                            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
-                        </div>
                         <h3>Apple Music</h3>
                         <span class="streaming-status">به زودی</span>
                     </a>
-
                     <a href="#" class="streaming-card">
-                        <div class="streaming-card-icon">
-                            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.725c-.1.075-.175.2-.175.35 0 .15.075.275.175.35l1.65 1.275c.1.075.25.075.35 0z"/></svg>
-                        </div>
                         <h3>SoundCloud</h3>
                         <span class="streaming-status">به زودی</span>
                     </a>
-
                     <a href="#" class="streaming-card">
-                        <div class="streaming-card-icon">
-                            <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M18.81 4.16v3.03H24V4.16h-5.19z"/></svg>
-                        </div>
                         <h3>Deezer</h3>
                         <span class="streaming-status">به زودی</span>
                     </a>
