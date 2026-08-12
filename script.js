@@ -1,6 +1,6 @@
 // ============================================
 // IDEN — SONIC UNIVERSE
-// Complete JavaScript — Final
+// Complete JavaScript — Final (Debugged)
 // ============================================
 
 // ========== PRELOADER ==========
@@ -63,16 +63,19 @@ document.addEventListener('contextmenu', function(e) {
     return false;
 });
 
-// ========== NAVBAR ==========
+// ========== NAVBAR SCROLL EFFECT ==========
 var navbar = document.getElementById('navbar');
 window.addEventListener('scroll', function() {
     if (navbar) {
-        if (window.scrollY > 50) navbar.classList.add('scrolled');
-        else navbar.classList.remove('scrolled');
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     }
 });
 
-// ========== MENU ==========
+// ========== MOBILE MENU ==========
 var menuBtn = document.getElementById('menuBtn');
 var navOverlay = document.getElementById('navOverlay');
 var menuOpen = false;
@@ -87,6 +90,7 @@ if (menuBtn && navOverlay) {
     };
 }
 
+// Close menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(function(link) {
     link.onclick = function() {
         menuOpen = false;
@@ -96,29 +100,63 @@ document.querySelectorAll('.nav-link').forEach(function(link) {
     };
 });
 
-// ========== TYPEWRITER ==========
-var texts = ['آهنگساز، پرودیوسر و هنرمند مستقل', 'با وجود من آوا های متفاوتی میشنوی', 'IDEN You Are Crazy'];
-var ti = 0, ci = 0, del = false;
+// Close menu when clicking outside
+document.addEventListener('click', function(e) {
+    if (menuOpen && navOverlay && !e.target.closest('.nav-overlay-content') && !e.target.closest('#menuBtn')) {
+        menuOpen = false;
+        menuBtn.classList.remove('active');
+        navOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});
+
+// ========== TYPEWRITER EFFECT ==========
+var texts = [
+    'آهنگساز، پرودیوسر و هنرمند مستقل',
+    'با وجود من آوا های متفاوتی میشنوی',
+    'IDEN You Are Crazy'
+];
+var ti = 0;
+var ci = 0;
+var del = false;
 var twEl = document.getElementById('typewriter');
 
 function typeWriter() {
     if (!twEl) return;
+    
     var current = texts[ti];
+    
     if (del) {
-        twEl.innerHTML = current.substring(0, ci - 1) + '<span class="cursor"></span>';
+        // Deleting text
         ci--;
+        twEl.innerHTML = current.substring(0, ci) + '<span class="cursor"></span>';
     } else {
-        twEl.innerHTML = current.substring(0, ci + 1) + '<span class="cursor"></span>';
+        // Typing text
         ci++;
+        twEl.innerHTML = current.substring(0, ci) + '<span class="cursor"></span>';
     }
+    
     var speed = del ? 40 : 70;
-    if (!del && ci === current.length) { speed = 2000; del = true; }
-    else if (del && ci === 0) { del = false; ti = (ti + 1) % texts.length; speed = 400; }
+    
+    if (!del && ci === current.length) {
+        // Text complete, wait before deleting
+        speed = 2000;
+        del = true;
+    } else if (del && ci === 0) {
+        // Text deleted, move to next
+        del = false;
+        ti = (ti + 1) % texts.length;
+        ci = 0; // Reset counter for new text
+        speed = 400;
+    }
+    
     setTimeout(typeWriter, speed);
 }
+
+// Start typewriter
 typeWriter();
 
-// ========== POPUP ==========
+// ========== MUSIC POPUP ==========
 var platformPopup = document.getElementById('platformPopup');
 var popupOverlay = document.getElementById('popupOverlay');
 var popupClose = document.getElementById('popupClose');
@@ -129,31 +167,60 @@ var miniCoverImg = document.querySelector('.player-mini-cover img');
 function openPopup(trackName, coverSrc, audioSrc) {
     if (popupTrackName) popupTrackName.textContent = trackName;
     if (miniCoverImg && coverSrc) miniCoverImg.src = coverSrc;
-    if (audioPlayer && audioSrc) { audioPlayer.src = audioSrc; audioPlayer.load(); }
+    
+    if (audioPlayer && audioSrc) {
+        audioPlayer.src = audioSrc;
+        audioPlayer.load();
+    }
+    
     if (platformPopup) {
         platformPopup.style.display = 'flex';
         platformPopup.style.alignItems = 'center';
         platformPopup.style.justifyContent = 'center';
     }
+    
+    // Reset player state
+    isPlaying = false;
+    if (playBtn) playBtn.classList.remove('playing');
+    if (playIcon) playIcon.textContent = '▶';
+    if (visualizer) visualizer.classList.remove('active');
+    if (progressFill) progressFill.style.width = '0%';
+    if (currentTimeEl) currentTimeEl.textContent = '0:00';
+    if (totalTimeEl) totalTimeEl.textContent = '0:00';
+    
     document.body.style.overflow = 'hidden';
 }
 
 function closePopup() {
     if (platformPopup) platformPopup.style.display = 'none';
     document.body.style.overflow = '';
-    if (audioPlayer) { audioPlayer.pause(); audioPlayer.currentTime = 0; }
+    
+    if (audioPlayer) {
+        audioPlayer.pause();
+        audioPlayer.currentTime = 0;
+    }
+    
+    isPlaying = false;
     if (playBtn) playBtn.classList.remove('playing');
     if (playIcon) playIcon.textContent = '▶';
     if (visualizer) visualizer.classList.remove('active');
+    if (progressFill) progressFill.style.width = '0%';
+    if (currentTimeEl) currentTimeEl.textContent = '0:00';
 }
 
+// Featured track click
 var trackCover1 = document.getElementById('trackCover1');
 if (trackCover1) {
     trackCover1.onclick = function() {
-        openPopup('Fuck The Police', 'https://i.ibb.co/mCrXy88Q/Cover.png', 'https://files.catbox.moe/wcpaia.mp3');
+        openPopup(
+            'Fuck The Police',
+            'https://i.ibb.co/mCrXy88Q/Cover.png',
+            'https://files.catbox.moe/wcpaia.mp3'
+        );
     };
 }
 
+// Track cards click
 document.querySelectorAll('.track-card').forEach(function(card) {
     card.onclick = function() {
         var trackName = card.getAttribute('data-track') || 'Track';
@@ -163,10 +230,18 @@ document.querySelectorAll('.track-card').forEach(function(card) {
     };
 });
 
+// Popup close events
 if (popupOverlay) popupOverlay.onclick = closePopup;
 if (popupClose) popupClose.onclick = closePopup;
 
-// ========== PLAYER ==========
+// Close popup with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && platformPopup && platformPopup.style.display === 'flex') {
+        closePopup();
+    }
+});
+
+// ========== AUDIO PLAYER ==========
 var playBtn = document.getElementById('playerPlayBtn');
 var playIcon = document.getElementById('playIcon');
 var progressFill = document.getElementById('playerProgressFill');
@@ -180,12 +255,13 @@ var isPlaying = false;
 var isMuted = false;
 
 function formatTime(seconds) {
-    if (isNaN(seconds)) return '0:00';
+    if (isNaN(seconds) || seconds < 0) return '0:00';
     var mins = Math.floor(seconds / 60);
     var secs = Math.floor(seconds % 60);
     return mins + ':' + (secs < 10 ? '0' : '') + secs;
 }
 
+// Play/Pause button
 if (playBtn && audioPlayer) {
     playBtn.onclick = function() {
         if (isPlaying) {
@@ -195,7 +271,9 @@ if (playBtn && audioPlayer) {
             visualizer.classList.remove('active');
             isPlaying = false;
         } else {
-            audioPlayer.play();
+            audioPlayer.play().catch(function(error) {
+                console.log('Playback error:', error);
+            });
             playBtn.classList.add('playing');
             playIcon.textContent = '⏸';
             visualizer.classList.add('active');
@@ -204,6 +282,7 @@ if (playBtn && audioPlayer) {
     };
 }
 
+// Time update
 if (audioPlayer) {
     audioPlayer.ontimeupdate = function() {
         if (audioPlayer.duration) {
@@ -213,25 +292,45 @@ if (audioPlayer) {
             if (totalTimeEl) totalTimeEl.textContent = formatTime(audioPlayer.duration);
         }
     };
+    
+    // Loaded metadata
     audioPlayer.onloadedmetadata = function() {
         if (totalTimeEl) totalTimeEl.textContent = formatTime(audioPlayer.duration);
     };
+    
+    // Audio ended
     audioPlayer.onended = function() {
         isPlaying = false;
-        playBtn.classList.remove('playing');
-        playIcon.textContent = '▶';
-        visualizer.classList.remove('active');
+        if (playBtn) playBtn.classList.remove('playing');
+        if (playIcon) playIcon.textContent = '▶';
+        if (visualizer) visualizer.classList.remove('active');
+        if (progressFill) progressFill.style.width = '0%';
+        if (currentTimeEl) currentTimeEl.textContent = '0:00';
+    };
+    
+    // Audio error
+    audioPlayer.onerror = function() {
+        console.log('Audio loading error');
+        isPlaying = false;
+        if (playBtn) playBtn.classList.remove('playing');
+        if (playIcon) playIcon.textContent = '▶';
+        if (visualizer) visualizer.classList.remove('active');
     };
 }
 
+// Progress bar click
 if (progress && audioPlayer) {
     progress.onclick = function(e) {
         var rect = progress.getBoundingClientRect();
         var percent = (e.clientX - rect.left) / rect.width;
-        if (audioPlayer.duration) audioPlayer.currentTime = percent * audioPlayer.duration;
+        percent = Math.max(0, Math.min(1, percent)); // Clamp between 0 and 1
+        if (audioPlayer.duration) {
+            audioPlayer.currentTime = percent * audioPlayer.duration;
+        }
     };
 }
 
+// Mute button
 if (muteBtn && audioPlayer) {
     muteBtn.onclick = function() {
         if (isMuted) {
@@ -252,11 +351,39 @@ var easterEgg = document.getElementById('easterEgg');
 
 if (easterEggTrigger && easterEgg) {
     easterEggTrigger.onclick = function() {
-        easterEgg.querySelector('span').textContent = 'IDEN You Are Crazy';
+        var span = easterEgg.querySelector('span');
+        if (span) {
+            span.textContent = 'IDEN You Are Crazy';
+        }
         easterEgg.classList.add('show');
-        setTimeout(function() { easterEgg.classList.remove('show'); }, 3000);
+        
+        // Clear previous timeout
+        if (easterEgg._timeout) {
+            clearTimeout(easterEgg._timeout);
+        }
+        
+        // Auto hide after 3 seconds
+        easterEgg._timeout = setTimeout(function() {
+            easterEgg.classList.remove('show');
+        }, 3000);
     };
 }
 
+// ========== KEYBOARD SHORTCUTS ==========
+document.addEventListener('keydown', function(e) {
+    // Space to play/pause (when popup is open)
+    if (e.key === ' ' && platformPopup && platformPopup.style.display === 'flex') {
+        e.preventDefault();
+        if (playBtn) playBtn.click();
+    }
+    
+    // M key to mute/unmute
+    if (e.key.toLowerCase() === 'm' && platformPopup && platformPopup.style.display === 'flex') {
+        e.preventDefault();
+        if (muteBtn) muteBtn.click();
+    }
+});
+
 // ========== CONSOLE ==========
-console.log('IDEN You Are Crazy — Sonic Universe Loaded!');
+console.log('%c IDEN You Are Crazy — Sonic Universe Loaded! ', 'background: #c41e3a; color: white; font-size: 16px; padding: 10px;');
+console.log('%c Music · Art · Identity ', 'background: #c8a45c; color: black; font-size: 12px; padding: 5px;');
