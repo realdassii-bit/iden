@@ -325,4 +325,194 @@ console.log('%c🎵 %cIDEN %c— %cSonic Universe',
     'font-size:1.5em;font-weight:bold;color:#c41e3a;',
     '',
     'font-style:italic;color:#c8a45c;');
-	
+// ========== PLATFORM POPUP + LUXURY PLAYER ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const platformPopup = document.getElementById('platformPopup');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupClose = document.getElementById('popupClose');
+    const popupTrackName = document.getElementById('popupTrackName');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playerPlayBtn');
+    const playIcon = document.getElementById('playIcon');
+    const progressFill = document.getElementById('playerProgressFill');
+    const progress = document.getElementById('playerProgress');
+    const currentTimeEl = document.getElementById('currentTime');
+    const totalTimeEl = document.getElementById('totalTime');
+    const muteBtn = document.getElementById('playerMuteBtn');
+    const muteIcon = document.getElementById('muteIcon');
+    const visualizer = document.getElementById('visualizer');
+
+    let isPlaying = false;
+    let isMuted = false;
+
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+
+    function openPopup(trackName) {
+        if (popupTrackName) popupTrackName.textContent = trackName;
+        if (platformPopup) {
+            platformPopup.classList.add('active');
+            platformPopup.style.display = 'block';
+        }
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+        if (platformPopup) {
+            platformPopup.classList.remove('active');
+            platformPopup.style.display = 'none';
+        }
+        document.body.style.overflow = '';
+        stopAudio();
+    }
+
+    function stopAudio() {
+        if (audioPlayer) {
+            audioPlayer.pause();
+            audioPlayer.currentTime = 0;
+            isPlaying = false;
+            if (playBtn) {
+                playBtn.classList.remove('playing');
+                if (playIcon) playIcon.textContent = '▶';
+            }
+            if (visualizer) visualizer.classList.remove('active');
+            if (progressFill) progressFill.style.width = '0%';
+            if (currentTimeEl) currentTimeEl.textContent = '0:00';
+        }
+    }
+
+    // ترک اصلی
+    const trackCover1 = document.getElementById('trackCover1');
+    if (trackCover1) {
+        trackCover1.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openPopup('Fuck The Police');
+        });
+    }
+
+    // ترک‌های گرید
+    document.querySelectorAll('.track-card').forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const trackName = card.getAttribute('data-track');
+            openPopup(trackName);
+        });
+    });
+
+    // بستن
+    if (popupOverlay) {
+        popupOverlay.addEventListener('click', function(e) {
+            e.preventDefault();
+            closePopup();
+        });
+    }
+
+    if (popupClose) {
+        popupClose.addEventListener('click', function(e) {
+            e.preventDefault();
+            closePopup();
+        });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closePopup();
+    });
+
+    // ========== LUXURY PLAYER ==========
+    if (playBtn) {
+        playBtn.addEventListener('click', function() {
+            if (isPlaying) {
+                audioPlayer.pause();
+                playBtn.classList.remove('playing');
+                playIcon.textContent = '▶';
+                visualizer.classList.remove('active');
+                isPlaying = false;
+            } else {
+                audioPlayer.play();
+                playBtn.classList.add('playing');
+                playIcon.textContent = '⏸';
+                visualizer.classList.add('active');
+                isPlaying = true;
+            }
+        });
+    }
+
+    if (audioPlayer) {
+        audioPlayer.addEventListener('timeupdate', function() {
+            const current = audioPlayer.currentTime;
+            const duration = audioPlayer.duration;
+            if (duration) {
+                const percent = (current / duration) * 100;
+                if (progressFill) progressFill.style.width = percent + '%';
+                if (currentTimeEl) currentTimeEl.textContent = formatTime(current);
+                if (totalTimeEl) totalTimeEl.textContent = formatTime(duration);
+            }
+        });
+
+        audioPlayer.addEventListener('loadedmetadata', function() {
+            if (totalTimeEl) totalTimeEl.textContent = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener('ended', function() {
+            isPlaying = false;
+            if (playBtn) {
+                playBtn.classList.remove('playing');
+                if (playIcon) playIcon.textContent = '▶';
+            }
+            if (visualizer) visualizer.classList.remove('active');
+            if (progressFill) progressFill.style.width = '0%';
+            if (currentTimeEl) currentTimeEl.textContent = '0:00';
+        });
+    }
+
+    if (progress) {
+        progress.addEventListener('click', function(e) {
+            const rect = progress.getBoundingClientRect();
+            const percent = (e.clientX - rect.left) / rect.width;
+            if (audioPlayer.duration) {
+                audioPlayer.currentTime = percent * audioPlayer.duration;
+            }
+        });
+    }
+
+    if (muteBtn) {
+        muteBtn.addEventListener('click', function() {
+            if (isMuted) {
+                audioPlayer.muted = false;
+                muteIcon.textContent = '🔊';
+                isMuted = false;
+            } else {
+                audioPlayer.muted = true;
+                muteIcon.textContent = '🔇';
+                isMuted = true;
+            }
+        });
+    }
+});// ========== DOWNLOAD SECRET ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadBtn = document.getElementById('downloadBtn');
+    const downloadSecret = document.getElementById('downloadSecret');
+    let secretVisible = false;
+
+    if (downloadBtn && downloadSecret) {
+        downloadBtn.addEventListener('click', function() {
+            if (!secretVisible) {
+                downloadSecret.classList.add('show');
+                secretVisible = true;
+            }
+        });
+
+        downloadSecret.addEventListener('click', function() {
+            // لینک دانلود
+            window.open('https://files.catbox.moe/wcpaia.mp3', '_blank');
+            // یا دانلود مستقیم
+            // window.location.href = 'https://files.catbox.moe/wcpaia.mp3';
+        });
+    }
+});
