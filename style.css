@@ -436,3 +436,44 @@ body {
     .player-play { width: 40px; height: 40px; font-size: 0.9rem; }
     .player-mute { width: 32px; height: 32px; }
 }
+/* ========== HEADER FIX ========== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-main {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.3em;
+    direction: ltr;
+    display: block;
+}
+
+.logo-shadow {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--red);
+    letter-spacing: 0.3em;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    opacity: 0.5;
+    direction: ltr;
+    display: block;
+}
