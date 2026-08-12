@@ -746,3 +746,73 @@ body {
         padding: 0.7rem;
     }
 }
+/* ========== GLOBAL MOBILE RESET ========== */
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .main-wrapper,
+    .section-container,
+    .hero-container,
+    .navbar-container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+    }
+    
+    .section {
+        width: 100%;
+        padding: 3rem 0;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 5rem 0.5rem 2rem;
+    }
+    
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .hero-portal {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .hero-char {
+        font-size: 3rem;
+    }
+    
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .about-morph {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
+    
+    .expertise-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .music-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .social-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .streaming-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
