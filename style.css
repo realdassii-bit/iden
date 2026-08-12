@@ -816,3 +816,57 @@ body {
         grid-template-columns: 1fr 1fr;
     }
 }
+/* ========== MOBILE FULL FIX ========== */
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    
+    .hero-portal {
+        width: 160px;
+        height: 160px;
+        margin: 0 auto;
+    }
+    
+    .hero-char {
+        font-size: 3rem;
+    }
+    
+    .about-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .about-morph {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
+    
+    .expertise-grid,
+    .music-grid,
+    .social-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .streaming-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .section {
+        padding: 3rem 0;
+    }
+    
+    .section-container {
+        padding: 0 0.8rem;
+    }
+}
