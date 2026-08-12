@@ -354,4 +354,68 @@ body {
     .streaming-grid { grid-template-columns: 1fr; }
     .player-play { width: 40px; height: 40px; font-size: 0.9rem; }
     .player-mute { width: 32px; height: 32px; }
+}@media (max-width: 768px) {
+    .hero-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+    }
+    
+    .hero-visual {
+        order: 1 !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+    
+    .hero-content {
+        order: 2 !important;
+        text-align: center !important;
+        width: 100% !important;
+    }
+    
+    .hero-portal {
+        width: 150px !important;
+        height: 150px !important;
+        margin: 0 auto !important;
+    }
+    
+    .hero-image-wrap {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .hero-image {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .hero-title {
+        justify-content: center !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+    }
+    
+    .hero-char {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-eyebrow {
+        justify-content: center !important;
+    }
+    
+    .hero-actions {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem !important;
+    }
+    
+    .hero-typewriter {
+        font-size: 0.9rem !important;
+    }
 }
