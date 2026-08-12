@@ -66,7 +66,7 @@ document.addEventListener('contextmenu', function(e) {
 });
 
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].indexOf(e.key) !== -1)) {
+    if (e.key === 'F12') {
         e.preventDefault();
         showNotification();
     }
@@ -134,8 +134,7 @@ revealElements.forEach(function(el) {
 // ========== TYPEWRITER ==========
 const typewriterTexts = [
     'آهنگساز، پرودیوسر و هنرمند مستقل',
-    'خالق اینسترومنتال‌های مستقل',
-    'طراح صدا و کارگردان خلاق',
+    'آوا هایی توسط من تولید میشن با تمام آوا ها متفاوته ',
     'IDEN You Are Crazy'
 ];
 let textIndex = 0;
@@ -165,19 +164,6 @@ function typeWriter() {
 }
 if (typewriterEl) typeWriter();
 
-// ========== AUDIO TOGGLE (Hero) ==========
-const toggleAudioBtn = document.getElementById('toggleAudio');
-if (toggleAudioBtn) {
-    toggleAudioBtn.addEventListener('click', function() {
-        const icon = this.querySelector('span');
-        if (icon.textContent === '▶') {
-            icon.textContent = '⏸';
-        } else {
-            icon.textContent = '▶';
-        }
-    });
-}
-
 // ========== VINYL ==========
 const vinylRecord = document.getElementById('vinylRecord');
 if (vinylRecord) {
@@ -191,13 +177,13 @@ const platformPopup = document.getElementById('platformPopup');
 const popupOverlay = document.getElementById('popupOverlay');
 const popupClose = document.getElementById('popupClose');
 const popupTrackName = document.getElementById('popupTrackName');
+const audioPlayer = document.getElementById('audioPlayer');
 
 function openPopup(trackName) {
     if (popupTrackName) popupTrackName.textContent = trackName;
     if (platformPopup) {
         platformPopup.classList.add('active');
         platformPopup.style.display = 'block';
-        platformPopup.style.pointerEvents = 'all';
     }
     document.body.style.overflow = 'hidden';
 }
@@ -206,12 +192,12 @@ function closePopup() {
     if (platformPopup) {
         platformPopup.classList.remove('active');
         platformPopup.style.display = 'none';
-        platformPopup.style.pointerEvents = 'none';
     }
     document.body.style.overflow = '';
     stopAudio();
 }
 
+// ترک اصلی
 const trackCover1 = document.getElementById('trackCover1');
 if (trackCover1) {
     trackCover1.addEventListener('click', function(e) {
@@ -221,15 +207,17 @@ if (trackCover1) {
     });
 }
 
+// ترک‌های گرید
 document.querySelectorAll('.track-card').forEach(function(card) {
     card.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        const trackName = card.getAttribute('data-track') || 'Track';
-        openPopup(trackName);
+        const trackName = card.getAttribute('data-track');
+        openPopup(trackName || 'Track');
     });
 });
 
+// بستن
 if (popupOverlay) {
     popupOverlay.addEventListener('click', function(e) {
         e.preventDefault();
@@ -249,7 +237,6 @@ document.addEventListener('keydown', function(e) {
 });
 
 // ========== LUXURY PLAYER ==========
-const audioPlayer = document.getElementById('audioPlayer');
 const playBtn = document.getElementById('playerPlayBtn');
 const playIcon = document.getElementById('playIcon');
 const progressFill = document.getElementById('playerProgressFill');
@@ -405,4 +392,4 @@ function triggerEasterEgg(msg) {
 }
 
 // ========== CONSOLE ==========
-console.log('IDEN You Are Crazy — Sonic Universe Loaded Successfully!');
+console.log('IDEN You Are Crazy — Sonic Universe Loaded!');
