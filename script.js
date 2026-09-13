@@ -27,8 +27,9 @@
       title: 'Fuck The Police',
       artist: 'IDEN · SONIC UNIVERSE',
       cover: 'https://i.ibb.co/mCrXy88Q/Cover.png',
-      src: 'test-music.wav'
+      src: 'https://drive.usercontent.google.com/download?id=1btKM1_Ml0h6Z1NWgt8vPiajBMsxoCqOu&export=download&authuser=0&confirm=t&uuid=e97a6f9a-bc8d-46e5-9234-f40e4c36c088&at=AMrWOn1djK5VXuwoSQl0R_rOx5xE:1789306433073'
     },
+    { title: 'اثر بعدی', comingSoon: true },
     { title: 'اثر بعدی', comingSoon: true },
     { title: 'اثر بعدی', comingSoon: true },
     { title: 'اثر بعدی', comingSoon: true }
