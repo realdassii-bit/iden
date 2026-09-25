@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#000000">
+    <title>IDEN — روایتی که توسط ساز گفته می‌شود | آیدن</title>
+    <meta name="description" content="IDEN — موسیقی، هنر و هویت. جهان صوتی یک آهنگساز و تهیه‌کننده مستقل.">
+    <meta property="og:image" content="https://i.ibb.co/4ZLs9FfW/Profile.jpg">
+    <meta name="twitter:image" content="https://i.ibb.co/4ZLs9FfW/Profile.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>document.documentElement.classList.add('js');</script>
+<meta property="og:title" content="IDEN — Music · Art · Identity">
+<meta property="og:description" content="جهان صوتی IDEN؛ موسیقی، هنر و هویت.">
+<meta name="theme-color" content="#080808">
+<link rel="canonical" href="https://realdassii-bit.github.io/iden/">
+</head>
+<body>
+<a class="skip-link" href="#main-content">پرش به محتوای اصلی</a>
+
+    <div class="floating-tag" style="top:8%;animation-duration:20s">IDEN You Are Crazy</div>
+    <div class="floating-tag" style="top:22%;animation-duration:25s;animation-delay:-3s">IDEN You Are Crazy</div>
+    <div class="floating-tag" style="top:36%;animation-duration:22s;animation-delay:-7s">IDEN You Are Crazy</div>
+    <div class="floating-tag" style="top:50%;animation-duration:28s;animation-delay:-10s">IDEN You Are Crazy</div>
+    <div class="floating-tag" style="top:64%;animation-duration:24s;animation-delay:-14s">IDEN You Are Crazy</div>
+    <div class="floating-tag" style="top:78%;animation-duration:26s;animation-delay:-18s">IDEN You Are Crazy</div>
+    <div class="floating-tag" style="top:90%;animation-duration:23s;animation-delay:-5s">IDEN You Are Crazy</div>
+    <div class="floating-tag-diagonal">IDEN You Are Crazy</div>
+
+    <canvas id="particlesCanvas"></canvas>
+    <div class="vignette"></div>
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <div class="iden-block-overlay" id="accessBlockedOverlay">
+        <div class="iden-block-code">403</div>
+        <div class="iden-block-msg">دسترسی تعریف نشده</div>
+        <div class="iden-block-sub">Access is not defined for this action.</div>
+    </div>
+
+
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-glitch">IDEN</div>
+            <div class="preloader-line"></div>
+            <div class="preloader-wave">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span>
+            </div>
+            <p class="preloader-subtitle">I'M IDEN — I'M CRAZY</p>
+            <div class="preloader-progress"><div class="preloader-progress-bar" id="progressBar"></div></div>
+        </div>
+    </div>
+
+    <button class="easter-egg-trigger" id="easterEggTrigger" title="?">?</button>
+
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="#home" class="logo"><span class="logo-main">IDEN</span><span class="logo-shadow">IDEN</span></a>
+            <button class="menu-btn" id="menuBtn" aria-label="باز کردن منو" aria-expanded="false" aria-controls="navOverlay"><span class="menu-btn-line"></span><span class="menu-btn-line"></span></button>
+            <div class="nav-overlay" id="navOverlay">
+                <div class="nav-overlay-bg"></div>
+                <nav class="nav-overlay-content">
+                    <ul class="nav-links-main">
+                        <li><a href="#home" class="nav-link">خانه</a></li>
+                        <li><a href="#about" class="nav-link">درباره</a></li>
+                        <li><a href="#expertise" class="nav-link">تخصص</a></li>
+                        <li><a href="#music" class="nav-link">موسیقی</a></li>
+                        <li><a href="#journey" class="nav-link">مسیر</a></li>
+                        <li><a href="#social" class="nav-link">ارتباط</a></li>
+                        <li><a href="#streaming" class="nav-link">استریم</a></li>
+                        <li><a href="#contact" class="nav-link">تماس</a></li>
+                    </ul>
+                    <div class="nav-overlay-footer"><span>MUSIC · ART · IDENTITY</span><span class="nav-easter-egg">IDEN You Are Crazy</span></div>
+                </nav>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="hero" id="home">
+            <div class="hero-bg-orb"></div>
+            <div class="hero-container">
+                <div class="hero-visual">
+                    <div class="hero-portal">
+                        <div class="portal-ring portal-ring-1"></div>
+                        <div class="portal-ring portal-ring-2"></div>
+                        <div class="portal-ring portal-ring-3"></div>
+                        <div class="portal-ring portal-ring-4"></div>
+                        <div class="hero-image-wrap">
+                            <img class="hero-image" src="https://i.ibb.co/4ZLs9FfW/Profile.jpg" alt="IDEN">
+                            <div class="hero-image-glitch"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <div class="hero-eyebrow"><span class="hero-eyebrow-line"></span><span class="hero-eyebrow-text">WELCOME TO THE UNIVERSE</span><span class="hero-eyebrow-line"></span></div>
+                    <h1 class="hero-title" dir="ltr"><span class="hero-char">I</span><span class="hero-char">D</span><span class="hero-char hero-char-outline">E</span><span class="hero-char hero-char-outline">N</span></h1>
+                    <div class="hero-typewriter" id="typewriter"></div>
+<p class="hero-description">با <span class="text-glow">آیدن</span> صدا شنیده نمی‌شود؛ صدا <span class="text-glow">درک می‌شود</span></p>                    <div class="hero-actions"><a href="#music" class="btn btn-primary"><span>آخرین اثر →</span></a></div>
+                </div>
+            </div>
+            <div class="scroll-indicator"><span>SCROLL</span><div class="scroll-indicator-line"></div></div>
+        </section>
+
+<section class="section" id="about">
+    <div class="section-container">
+        <div class="section-header reveal"><span class="section-tag">[ 01 ] — درباره</span><h2 class="section-title"><span class="title-line">صدایی که</span><span class="title-line title-outline">درک می‌شود</span></h2></div>
+        <div class="about-grid">
+            <div class="about-visual reveal"><div class="about-morph"><div class="morph-shape"></div><div class="morph-shape morph-shape-2"></div><span class="about-floating-text">آیدن</span></div></div>
+            <div class="about-content reveal reveal-delay-1">
+                <span class="about-label">ARTIST PROFILE</span>
+                <h3 class="about-heading">آیدن؛ روایتِ بی‌کلامِ صدا</h3>
+                <div class="about-bio">
+                    <p><strong>دانیال سبیعی</strong> با نام هنری <strong>IDEN</strong>، آهنگساز، تهیه‌کننده و هنرمند مستقل است که موسیقی را نه به عنوان یک ژانر، بلکه به‌عنوان <em>زبانِ بی‌مرزِ روح</em> انتخاب کرده است.</p>
+                    <p>برخلاف تصور، دنیای آیدن به <strong>اینسترومنتال‌های غمگین و آلترناتیو</strong> محدود نمی‌شود — او در ژانرهای مختلف تجربه می‌کند؛ از فضاهای شنیداری عمیق تا ریتم‌های پرخاشگر، از ملودی‌های لطیف تا ضرب‌های بی‌رحمانه.</p>
+                    <p>هر سبک برای او یک زبان تازه است؛ هر قطعه هم روایتی است که با شنونده کامل می‌شود.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="about-stat"><span class="stat-number">20</span><span class="stat-label">سال</span></div>
+                    <div class="about-stat"><span class="stat-number">∞</span><span class="stat-label">ایده‌ها</span></div>
+                    <div class="about-stat"><span class="stat-number">...</span><span class="stat-label">در حال خلق</span></div>
+                </div>
+                <div class="about-details">
+                    <div class="detail-item"><span class="detail-label">نام واقعی</span><span class="detail-value"> دانیال سبیعی </span></div>
+                    <div class="detail-item"><span class="detail-label">فعالیت</span><span class="detail-value"> آهنگساز · تهیه‌کننده · هنرمند مستقل </span></div>
+                    <div class="detail-item"><span class="detail-label">سبک‌ها</span><span class="detail-value"> بدون مرز — از آلترناتیو تا الکترونیک، از امبینت تا هیپ‌هاپ </span></div>
+                </div>
+            </div>
+        </div>
+        <div class="marquee-wrap reveal"><div class="marquee-track"><span>آنجا که کلام می‌میره، سازها متولد می‌شن</span><span class="marquee-sep">●</span><span>بعضی حرف‌ها رو فقط سازها می‌تونن بزنن</span><span class="marquee-sep">●</span><span>سازها حرف می‌زنند، ما فقط گوش می‌دیم</span><span class="marquee-sep">●</span><span>موسیقی بدون آوا، خالص‌ترین روایته</span><span class="marquee-sep">●</span><span>آنجا که کلام می‌میره، سازها متولد می‌شن</span><span class="marquee-sep">●</span><span>بعضی حرف‌ها رو فقط سازها می‌تونن بزنن</span><span class="marquee-sep">●</span><span>سازها حرف می‌زنند، ما فقط گوش می‌دیم</span><span class="marquee-sep">●</span><span>موسیقی بدون آوا، خالص‌ترین روایته</span></div></div>
+    </div>
+</section>
+
+        <section class="section" id="music">
+            <div class="section-container">
+                <div class="section-header reveal"><span class="section-tag">[ 03 ] — موسیقی</span><h2 class="section-title"><span class="title-line">آخرین</span><span class="title-line title-outline">اینسترومنتال‌های ریلیز شده</span></h2></div>
+                <div class="music-featured reveal" id="musicFeatured"></div>
+                <div class="music-grid reveal" id="musicGrid"></div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="journey">
+            <div class="section-container">
+                <div class="section-header reveal"><span class="section-tag">[ 04 ] — مسیر</span><h2 class="section-title">مسیر هنری</h2></div>
+                <div class="journey reveal">
+                    <div class="journey-line"></div>
+                    <div class="journey-node"><div class="node-marker"></div><span class="node-year">شروع</span><h3>کشف صدا</h3><p>جرقه اولیه؛ زمانی که موسیقی به زبان اصلی روح تبدیل شد</p></div>
+                    <div class="journey-node"><div class="node-marker"></div><span class="node-year">تکامل</span><h3>پرورش سبک</h3><p>تجربه ژانرهای مختلف و یافتن امضای صوتی شخصی</p></div>
+                    <div class="journey-node"><div class="node-marker"></div><span class="node-year">IDEN</span><h3>تولد یک برند</h3><p>ادغام موسیقی با هویت بصری؛ آغاز مسیر حرفه‌ای</p></div>
+                    <div class="journey-node"><div class="node-marker node-marker-active"></div><span class="node-year">اکنون</span><h3>فصل جدید</h3><p>آماده‌سازی برای انتشار اولین آثار رسمی</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="social">
+            <div class="section-container">
+                <div class="section-header reveal"><span class="section-tag">[ 05 ] — ارتباط</span><h2 class="section-title"><span class="title-line"> شبکه‌های اجتماعی</span><span class="title-line title-outline">آیدن</span></h2></div>
+                <div class="social-cards reveal">
+                    <a href="https://instagram.com/yourfavartiist" target="_blank" rel="noopener noreferrer" class="social-card"><div class="social-card-icon">📷</div><div class="social-card-info"><h3>Instagram</h3><span class="social-card-handle">@yourfavartiist</span></div></a>
+                    <a href="https://t.me/idenyouarecrazy" target="_blank" rel="noopener noreferrer" class="social-card"><div class="social-card-icon">📱</div><div class="social-card-info"><h3>Telegram</h3><span class="social-card-handle">@idenyouarecrazy</span></div></a>
+                    <a href="mailto:sxdanyal@gmail.com" class="social-card"><div class="social-card-icon">✉️</div><div class="social-card-info"><h3>Email</h3><span class="social-card-handle">sxdanyal@gmail.com</span></div></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="streaming">
+            <div class="section-container">
+                <div class="section-header reveal"><span class="section-tag">[ 06 ] — گوش کن</span><h2 class="section-title"><span class="title-line">پلتفرم‌های</span><span class="title-line title-outline">استریم</span></h2></div>
+                <div class="streaming-grid reveal">
+                    <div class="streaming-card is-coming"><h3>Spotify</h3><span class="streaming-status">به‌زودی</span></div>
+                    <div class="streaming-card is-coming"><h3>Apple Music</h3><span class="streaming-status">به‌زودی</span></div>
+                    <div class="streaming-card is-coming"><h3>SoundCloud</h3><span class="streaming-status">به‌زودی</span></div>
+                    <div class="streaming-card is-coming"><h3>Deezer</h3><span class="streaming-status">به‌زودی</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="section-container">
+                <div class="contact-block reveal">
+                    <span class="section-tag">[ 07 ] — همکاری</span>
+                    <h2 class="contact-title"><span>آماده‌ای برای</span><span class="title-outline"> همکاری؟ </span></h2>
+                    <p class="contact-text">برای پروژه‌های موسیقی، همکاری‌های خلاقانه و ارتباطات کاری، در تماس باشید.</p>
+                    <a href="mailto:sxdanyal@gmail.com" class="btn btn-primary btn-lg"><span>sxdanyal@gmail.com</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container"><span class="footer-logo">IDEN</span><span class="footer-tagline">MUSIC · ART · IDENTITY</span><span class="footer-copy">© 2026 — All rights reserved</span></div>
+    </footer>
+
+    <div class="easter-egg-hidden" id="easterEgg"><span>IDEN You Are Crazy</span></div>
+
+    <!-- Persistent mini player — stays visible across the whole site while a track plays -->
+    <div class="iplayer-dock" id="idenDockPlayer" role="region" aria-label="پخش‌کننده">
+        <div class="iplayer-dock-progress" id="dockProgress"><div class="iplayer-dock-progress-fill" id="dockProgressFill"></div></div>
+        <div class="iplayer-dock-row">
+            <button type="button" class="iplayer-dock-track" id="dockExpandBtn" aria-label="باز کردن پلیر کامل">
+                <span class="iplayer-dock-cover"><img id="dockCover" src="https://i.ibb.co/mCrXy88Q/Cover.png" alt=""></span>
+                <span class="iplayer-dock-meta">
+                    <span class="iplayer-dock-title" id="dockTitle">—</span>
+                    <span class="iplayer-dock-artist" id="dockArtist">IDEN</span>
+                </span>
+            </button>
+            <div class="iplayer-dock-controls">
+                <button type="button" class="iplayer-btn" id="dockPrevBtn" aria-label="قبلی">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"/><rect x="5" y="4" width="2.4" height="16"/></svg>
+                </button>
+                <button type="button" class="iplayer-btn iplayer-btn-play" id="dockPlayBtn" aria-label="پخش">
+                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="4" width="4.5" height="16" rx="1"/><rect x="14.5" y="4" width="4.5" height="16" rx="1"/></svg>
+                </button>
+                <button type="button" class="iplayer-btn" id="dockNextBtn" aria-label="بعدی">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"/><rect x="16.6" y="4" width="2.4" height="16"/></svg>
+                </button>
+            </div>
+            <button type="button" class="iplayer-dock-close" id="dockCloseBtn" aria-label="بستن پخش">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <div class="iplayer-modal" id="platformPopup" role="dialog" aria-modal="true" aria-label="پخش‌کننده">
+        <div class="iplayer-modal-overlay" id="popupOverlay"></div>
+        <div class="iplayer-modal-panel">
+            <button type="button" class="iplayer-modal-close" id="popupClose" aria-label="بستن">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+
+            <div class="iplayer-art">
+                <img id="popupCoverImg" src="https://i.ibb.co/mCrXy88Q/Cover.png" alt="Cover">
+                <div class="iplayer-visualizer" id="visualizer">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+
+            <div class="iplayer-meta">
+                <span class="iplayer-eyebrow">در حال پخش · <span id="playerTrackIndex">01 / 01</span></span>
+                <h3 class="iplayer-title" id="playerTrackTitle">Fuck The Police</h3>
+                <span class="iplayer-sub">IDEN · SONIC UNIVERSE</span>
+            </div>
+
+            <!-- برای اضافه کردن آهنگ جدید اینجا کاری لازم نیست —
+                 فقط آرایه‌ی TRACKS در بالای فایل script.js را ویرایش کن. -->
+            <audio id="audioPlayer" preload="none"></audio>
+
+            <div class="iplayer-progress-wrap">
+                <div class="iplayer-progress" id="playerProgress">
+                    <div class="iplayer-progress-fill" id="playerProgressFill"></div>
+                    <div class="iplayer-progress-handle"></div>
+                </div>
+                <div class="iplayer-time-row"><span id="currentTime">0:00</span><span id="totalTime">0:00</span></div>
+            </div>
+
+            <div class="iplayer-controls">
+                <button type="button" class="iplayer-btn iplayer-btn-sm" id="playerShuffleBtn" aria-label="تصادفی" title="پخش تصادفی">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+                </button>
+                <button type="button" class="iplayer-btn" id="playerPrevBtn" aria-label="قبلی">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"/><rect x="5" y="4" width="2.4" height="16"/></svg>
+                </button>
+                <button type="button" class="iplayer-btn iplayer-btn-main" id="playerPlayBtn" aria-label="پخش">
+                    <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 21 12 6 21 6 3"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4.5" height="16" rx="1"/><rect x="14.5" y="4" width="4.5" height="16" rx="1"/></svg>
+                </button>
+                <button type="button" class="iplayer-btn" id="playerNextBtn" aria-label="بعدی">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"/><rect x="16.6" y="4" width="2.4" height="16"/></svg>
+                </button>
+                <button type="button" class="iplayer-btn iplayer-btn-sm" id="playerRepeatBtn" aria-label="تکرار" title="تکرار">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                </button>
+            </div>
+
+            <div class="iplayer-volume">
+                <button type="button" class="iplayer-vol-btn" id="playerMuteBtn" aria-label="بی‌صدا کردن">
+                    <svg class="icon-vol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                    <svg class="icon-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" stroke="none"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                </button>
+                <input id="playerVolume" type="range" min="0" max="1" step="0.01" value="1" aria-label="صدای پخش">
+            </div>
+
+            <a href="#" class="iplayer-download" id="playerDownloadBtn" aria-label="دانلود این آهنگ" download>
+                <span class="iplayer-download-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><polyline points="7 11 12 16 17 11"/><path d="M4 19h16"/></svg>
+                </span>
+                <span class="iplayer-download-text">
+                    <span class="iplayer-download-title">دانلود آهنگ</span>
+                    <span class="iplayer-download-sub">همون فایلی که استریم می‌شه</span>
+                </span>
+            </a>
+
+            <div class="iplayer-playlist" id="idenPlaylist">
+                <div class="iplayer-playlist-head"><span>پلی‌لیست</span><span>SONIC UNIVERSE</span></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js" defer></script>
+<!-- IDEN // LIVE MOTION -->
+</body>
+</html>
