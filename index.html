@@ -1,1 +1,427 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000">
+<title>IDEN — YOU ARE CRAZY | آیدن</title>
+<meta name="description" content="IDEN — موسیقی، هنر و هویت. جهان صوتی یک آهنگساز و تهیه‌کننده مستقل.">
+<meta property="og:title" content="IDEN — Music · Art · Identity">
+<meta property="og:description" content="جهان صوتی IDEN؛ موسیقی، هنر و هویت.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000'/%3E%3Ctext x='32' y='48' font-size='44' text-anchor='middle' fill='%23e10a2d' font-family='Impact'%3EI%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Vazirmatn:wght@300;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--r:#e10a2d;--r2:#6b0010;--t:#ececec;--f:'Vazirmatn',sans-serif;--d:'Anton','Vazirmatn',Impact,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#000;color:var(--t);font-family:var(--f);overflow-x:hidden;line-height:1.8}
+body.fine,body.fine a,body.fine button{cursor:none}
+::selection{background:var(--r);color:#000}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-thumb{background:var(--r)}
+a{color:inherit;text-decoration:none}
+canvas.fx{position:fixed;inset:0;pointer-events:none}
+#bg{z-index:0;opacity:.32}#trail{z-index:9998}
+.wm{position:fixed;inset:-50%;z-index:1;pointer-events:none;opacity:.045;transform:rotate(-22deg);display:flex;flex-direction:column;gap:3.2rem;direction:ltr;animation:wmv 60s linear infinite}
+.wm span{font:900 2.6rem var(--d);letter-spacing:.3em;white-space:nowrap;color:var(--r)}
+.wm span:nth-child(even){transform:translateX(-12rem)}
+@keyframes wmv{to{transform:rotate(-22deg) translateY(-6rem)}}
+.vig{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,#000 100%);animation:beat 1.2s ease-in-out infinite}
+@keyframes beat{50%{box-shadow:inset 0 0 160px rgba(225,10,45,.28)}}
+.scan{position:fixed;inset:0;z-index:3;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px);mix-blend-mode:multiply}
+.scan::after{content:"";position:absolute;left:0;right:0;height:18vh;top:-20vh;background:linear-gradient(transparent,rgba(225,10,45,.07),transparent);animation:sweep 6s linear infinite}
+@keyframes sweep{to{top:110vh}}
+.noise{position:fixed;inset:-50%;z-index:3;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");animation:nz .5s steps(4) infinite}
+@keyframes nz{25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-2%,-1%)}}
+#pbar{position:fixed;top:0;right:0;height:3px;width:0;background:var(--r);box-shadow:0 0 14px var(--r);z-index:10000}
+#dot,#ring{position:fixed;top:0;left:0;pointer-events:none;z-index:10001;border-radius:50%;display:none}
+body.fine #dot,body.fine #ring{display:block}
+#dot{width:8px;height:8px;background:var(--r);margin:-4px 0 0 -4px}
+#ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid var(--r);transition:width .25s,height .25s,margin .25s,background .25s}
+#ring.h{width:70px;height:70px;margin:-35px 0 0 -35px;background:rgba(225,10,45,.15)}
+/* preloader */
+#pre{position:fixed;inset:0;z-index:20000;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:clip-path 1s cubic-bezier(.8,0,.2,1);clip-path:inset(0)}
+#pre.go{clip-path:inset(0 0 100% 0)}
+#pre .n{font:900 clamp(5rem,22vw,14rem) var(--d);color:var(--r);direction:ltr;line-height:1}
+#pre small{letter-spacing:.5em;color:#777;font-size:.75rem;direction:ltr}
+/* glitch */
+.gl{position:relative;display:inline-block}
+.gl::before,.gl::after{content:attr(data-t);position:absolute;inset:0;overflow:hidden}
+.gl::before{color:#0ff;mix-blend-mode:screen;transform:translateX(-3px);animation:g1 2.4s infinite steps(1)}
+.gl::after{color:var(--r);mix-blend-mode:screen;transform:translateX(3px);animation:g2 2s infinite steps(1)}
+@keyframes g1{0%,88%,100%{clip-path:inset(0 0 100% 0)}90%{clip-path:inset(10% 0 60% 0)}93%{clip-path:inset(60% 0 10% 0)}96%{clip-path:inset(30% 0 40% 0)}}
+@keyframes g2{0%,80%,100%{clip-path:inset(100% 0 0 0)}83%{clip-path:inset(40% 0 30% 0)}87%{clip-path:inset(5% 0 80% 0)}92%{clip-path:inset(70% 0 5% 0)}}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;mix-blend-mode:difference}
+.logo{font:900 1.9rem var(--d);letter-spacing:.15em;direction:ltr;user-select:none}
+#mb{background:none;border:0;color:#fff;width:46px;height:30px;display:flex;flex-direction:column;justify-content:space-between;padding:6px 0}
+#mb i{display:block;height:2px;background:#fff;transition:.4s}
+#mb.o i:first-child{transform:translateY(8px) rotate(45deg)}#mb.o i:last-child{transform:translateY(-8px) rotate(-45deg)}
+#ov{position:fixed;inset:0;z-index:800;background:#050000;display:flex;align-items:center;justify-content:center;clip-path:circle(0 at 95% 5%);transition:clip-path .8s cubic-bezier(.7,0,.2,1)}
+#ov.o{clip-path:circle(150% at 95% 5%)}
+#ov ul{list-style:none;text-align:center}
+#ov a{display:block;font:900 clamp(2rem,7vw,4.5rem) var(--f);transition:.3s;color:transparent;-webkit-text-stroke:1px #555}
+#ov a:hover{color:var(--r);-webkit-text-stroke:0;transform:scale(1.15) skewX(-8deg);text-shadow:0 0 30px var(--r)}
+/* hero */
+section{position:relative;z-index:5;padding:8rem 6vw}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;perspective:900px}
+.vinyl{position:absolute;width:min(95vw,780px);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#0a0a0a 0 3px,#150003 3px 5px),#000;border:1px solid var(--r2);box-shadow:0 0 120px rgba(225,10,45,.25),inset 0 0 80px #000;animation:spin 14s linear infinite;opacity:.8}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent,rgba(225,10,45,.35),transparent 25%,transparent 50%,rgba(225,10,45,.2),transparent 75%)}
+.vinyl::after{content:"IDEN";position:absolute;inset:36%;border-radius:50%;background:radial-gradient(var(--r),var(--r2));display:flex;align-items:center;justify-content:center;font:900 3rem var(--d);color:#000;letter-spacing:.1em;box-shadow:0 0 0 14px #000}
+body.playing .vinyl{animation-duration:3s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ringp{position:absolute;border:1px solid var(--r);border-radius:50%;width:300px;aspect-ratio:1;opacity:0;animation:rp 4s ease-out infinite}
+@keyframes rp{0%{transform:scale(.4);opacity:.8}100%{transform:scale(3.4);opacity:0}}
+.hz{position:relative;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .15s}
+.eb{letter-spacing:.7em;font-size:.72rem;color:var(--r);direction:ltr;margin-bottom:.5rem;animation:fl 3s infinite}
+@keyframes fl{0%,100%{opacity:1}50%{opacity:.3}93%{opacity:0}}
+.big{font:900 clamp(6rem,26vw,22rem) var(--d);line-height:.9;direction:ltr;color:#fff;text-shadow:0 0 40px rgba(225,10,45,.6),0 0 120px rgba(225,10,45,.35);display:flex;justify-content:center}
+.big span{display:inline-block;animation:bob 3s ease-in-out infinite;transition:.2s}
+.big span:nth-child(2){animation-delay:.2s;color:transparent;-webkit-text-stroke:2px var(--r)}
+.big span:nth-child(3){animation-delay:.4s}.big span:nth-child(4){animation-delay:.6s;color:transparent;-webkit-text-stroke:2px var(--r)}
+.big span:hover{transform:translateY(-20px) rotate(-8deg) scale(1.15);color:var(--r);-webkit-text-stroke:0}
+@keyframes bob{50%{transform:translateY(-14px)}}
+#tw{font-size:1.25rem;min-height:2.2rem;color:var(--r);margin-top:1rem}
+#tw::after{content:"▌";animation:fl 1s infinite}
+.sub{color:#999;margin:.8rem 0 2rem}.sub b{color:#fff;text-shadow:0 0 14px var(--r)}
+.btn{display:inline-block;padding:1rem 2.6rem;border:1px solid var(--r);color:#fff;font-weight:700;position:relative;overflow:hidden;transition:.4s;background:transparent}
+.btn::before{content:"";position:absolute;inset:0;background:var(--r);transform:translateY(101%);transition:.4s;z-index:-1}
+.btn:hover::before{transform:none}.btn:hover{box-shadow:0 0 40px var(--r);color:#000;letter-spacing:.05em}
+.scroll{position:absolute;bottom:1.5rem;font-size:.65rem;letter-spacing:.4em;color:#666;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.scroll i{width:1px;height:50px;background:linear-gradient(var(--r),transparent);animation:dr 1.6s infinite}
+@keyframes dr{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+/* headings */
+.tag{color:var(--r);letter-spacing:.3em;font-size:.8rem;display:block;margin-bottom:.5rem;direction:ltr;text-align:right}
+h2{font:900 clamp(2.4rem,7vw,5.5rem)/1.15 var(--f);margin-bottom:3rem}
+h2 em{font-style:normal;color:transparent;-webkit-text-stroke:1.5px var(--r);display:block}
+.rv{opacity:0;transform:translateY(60px) skewY(2deg);filter:blur(8px);transition:1s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none;filter:none}
+/* about */
+.ag{display:grid;grid-template-columns:1fr 1.3fr;gap:4rem;align-items:center}
+.blob{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.blob i{position:absolute;inset:8%;background:linear-gradient(135deg,var(--r),var(--r2) 60%,#000);border-radius:42% 58% 63% 37%/45% 35% 65% 55%;animation:mo 9s ease-in-out infinite;filter:drop-shadow(0 0 40px rgba(225,10,45,.5))}
+.blob i+i{inset:18%;background:#000;border:1px solid var(--r);animation-duration:7s;animation-direction:reverse}
+@keyframes mo{50%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%;transform:rotate(120deg) scale(1.06)}100%{border-radius:42% 58% 63% 37%/45% 35% 65% 55%;transform:rotate(360deg)}}
+.blob b{position:relative;font:900 clamp(3rem,9vw,6.5rem) var(--f);color:#fff;text-shadow:0 0 30px var(--r)}
+.bio p{color:#bbb;margin-bottom:1rem}.bio strong{color:#fff}.bio em{color:var(--r);font-style:normal}
+.stats{display:flex;gap:2rem;margin:2rem 0;flex-wrap:wrap}
+.stats div{border-right:2px solid var(--r);padding-right:1rem}
+.stats b{display:block;font:900 3rem var(--d);color:var(--r);line-height:1}
+.stats span{color:#888;font-size:.85rem}
+.det{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid #222;padding:.7rem 0;font-size:.9rem}.det span{color:#777}
+.mq{margin-top:5rem;overflow:hidden;border-block:1px solid var(--r2);padding:1rem 0;direction:ltr;transform:rotate(-1.5deg);background:rgba(225,10,45,.04)}
+.mq div{display:flex;gap:2.5rem;white-space:nowrap;width:max-content;animation:mq 35s linear infinite;font-weight:700;font-size:1.2rem;direction:rtl}
+.mq i{color:var(--r);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* music */
+.feat{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;border:1px solid #222;padding:2rem;background:linear-gradient(135deg,rgba(225,10,45,.08),transparent);position:relative;overflow:hidden;transition:.4s}
+.feat:hover{border-color:var(--r);box-shadow:0 0 60px rgba(225,10,45,.25)}
+.cov{width:min(260px,70vw);aspect-ratio:1;background:repeating-conic-gradient(var(--r2) 0 10deg,#000 10deg 20deg);position:relative;overflow:hidden;box-shadow:0 0 50px rgba(225,10,45,.4);transition:.5s}
+.feat:hover .cov{transform:rotate(-3deg) scale(1.05)}
+.cov img{width:100%;height:100%;object-fit:cover;position:relative;display:block}
+.feat h3{font:900 clamp(2rem,6vw,4rem) var(--d);direction:ltr;text-align:right;letter-spacing:.05em}
+.feat p{color:#888;direction:ltr;text-align:right;margin-bottom:1.2rem;letter-spacing:.2em;font-size:.8rem}
+.pb{width:76px;height:76px;border-radius:50%;border:2px solid var(--r);background:transparent;color:var(--r);font-size:1.6rem;transition:.3s;position:relative}
+.pb:hover{background:var(--r);color:#000;box-shadow:0 0 40px var(--r);transform:scale(1.12)}
+.pb::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid var(--r);animation:rp2 2s infinite}
+@keyframes rp2{to{transform:scale(1.5);opacity:0}}
+.mg{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-top:1.5rem}
+.mc{aspect-ratio:1;border:1px dashed #333;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;color:#555;transition:.4s;position:relative;overflow:hidden}
+.mc b{font:900 3rem var(--d);color:#222;transition:.4s}
+.mc:hover{border-color:var(--r);color:var(--r);transform:rotate(-2deg) scale(1.04)}.mc:hover b{color:var(--r);animation:shk .3s infinite}
+@keyframes shk{25%{transform:translate(2px,-2px)}75%{transform:translate(-2px,2px)}}
+/* journey */
+.jn{position:relative;padding-right:3rem;display:flex;flex-direction:column;gap:3rem}
+.jn::before{content:"";position:absolute;right:9px;top:0;bottom:0;width:2px;background:#222}
+.jl{position:absolute;right:9px;top:0;width:2px;height:0;background:var(--r);box-shadow:0 0 15px var(--r)}
+.nd{position:relative;transition:.4s}.nd:hover{transform:translateX(-14px)}
+.nd::before{content:"";position:absolute;right:-3.2rem;top:.6rem;width:20px;height:20px;background:#000;border:2px solid var(--r);border-radius:50%}
+.nd.on::before{background:var(--r);box-shadow:0 0 20px var(--r)}
+.nd small{color:var(--r);letter-spacing:.3em;direction:ltr;display:block;text-align:right}
+.nd h3{font-size:1.8rem}.nd p{color:#999}
+/* social */
+.sc{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+.sk{display:flex;align-items:center;gap:1.2rem;padding:1.8rem;border:1px solid #222;background:#050505;position:relative;overflow:hidden;transition:transform .2s,border-color .4s,box-shadow .4s}
+.sk::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(225,10,45,.35),transparent 60%);opacity:0;transition:.3s}
+.sk:hover::before{opacity:1}.sk:hover{border-color:var(--r);box-shadow:0 0 40px rgba(225,10,45,.3)}
+.sk svg{width:46px;height:46px;stroke:var(--r);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;position:relative;transition:.5s}
+.sk:hover svg{transform:rotate(360deg) scale(1.2)}
+.sk h3,.sk span{position:relative}.sk span{color:#888;direction:ltr;display:block;text-align:right;font-size:.9rem}
+.st{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.st div{padding:2rem;border:1px solid #1a1a1a;text-align:center;filter:grayscale(1);opacity:.6;transition:.4s}
+.st div:hover{filter:none;opacity:1;border-color:var(--r)}.st small{display:block;color:var(--r);letter-spacing:.2em}
+.ct{text-align:center}.ct h2{margin-bottom:1.5rem}.ct p{color:#999;margin-bottom:2rem}
+footer{position:relative;z-index:5;text-align:center;padding:4rem 1rem 8rem;border-top:1px solid #1a1a1a;color:#666;font-size:.8rem;letter-spacing:.2em}
+footer .fl{font:900 clamp(4rem,18vw,12rem) var(--d);color:transparent;-webkit-text-stroke:1px var(--r2);line-height:1;direction:ltr;transition:.5s}
+footer .fl:hover{-webkit-text-stroke:1px var(--r);text-shadow:0 0 60px var(--r)}
+.eyes{display:flex;gap:1rem;justify-content:center;margin:1.5rem 0}
+.eye{width:46px;height:46px;border-radius:50%;background:#fff;position:relative;overflow:hidden;animation:bl 5s infinite}
+.eye i{position:absolute;width:20px;height:20px;border-radius:50%;background:var(--r);box-shadow:inset 0 0 0 6px #000;top:13px;left:13px}
+@keyframes bl{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.05)}}
+/* dock */
+#dock{position:fixed;bottom:0;left:0;right:0;z-index:950;background:rgba(5,0,0,.92);backdrop-filter:blur(14px);border-top:1px solid var(--r);transform:translateY(110%);transition:.6s cubic-bezier(.2,.8,.2,1);direction:ltr}
+#dock.on{transform:none}
+#dp{height:4px;background:#222;cursor:pointer}#df{height:100%;width:0;background:var(--r);box-shadow:0 0 12px var(--r)}
+.dr{display:flex;align-items:center;gap:1rem;padding:.7rem 1.2rem}
+#dc{width:46px;height:46px;object-fit:cover;background:var(--r2)}
+.dm{flex:1;min-width:0}.dm b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dm small{color:var(--r);font-size:.7rem;letter-spacing:.2em}
+.dr button{background:none;border:1px solid #333;color:#fff;width:40px;height:40px;border-radius:50%;transition:.3s}
+.dr button:hover{border-color:var(--r);color:var(--r);box-shadow:0 0 15px var(--r)}
+.bars{display:flex;gap:2px;align-items:flex-end;height:30px}
+.bars i{width:3px;height:4px;background:var(--r)}
+body.playing .bars i{animation:eq .6s ease-in-out infinite alternate}
+@keyframes eq{to{height:30px}}
+/* toast, egg */
+#toasts{position:fixed;top:5rem;left:1rem;z-index:15000;display:flex;flex-direction:column;gap:.5rem;direction:rtl}
+.ts{background:#000;border:1px solid var(--r);padding:.8rem 1.2rem;box-shadow:0 0 25px rgba(225,10,45,.5);animation:ti .4s,to .5s 3.5s forwards}
+@keyframes ti{from{transform:translateX(-120%)}}@keyframes to{to{opacity:0;transform:translateY(-20px)}}
+#q{position:fixed;bottom:5.5rem;right:1rem;z-index:960;width:36px;height:36px;border-radius:50%;border:1px solid #333;background:#000;color:#555;font-weight:900;transition:.3s}
+#q:hover{color:var(--r);border-color:var(--r);transform:rotate(180deg)}
+#crazy{position:fixed;inset:0;z-index:19000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.55);pointer-events:none;font:900 clamp(3rem,14vw,12rem) var(--d);color:var(--r);text-align:center;direction:ltr;line-height:1;text-shadow:0 0 60px var(--r)}
+body.mad{animation:mad .15s infinite}body.mad #crazy{display:flex}
+body.mad main,body.mad section{filter:invert(1) hue-rotate(180deg)}
+@keyframes mad{25%{transform:translate(4px,-3px) skewX(1deg)}50%{transform:translate(-4px,3px)}75%{transform:translate(3px,4px) skewX(-1deg)}}
+.fw{position:fixed;z-index:9990;pointer-events:none;font:900 1.4rem var(--d);color:var(--r);direction:ltr;animation:fw 1.6s forwards;text-shadow:0 0 12px var(--r)}
+@keyframes fw{to{transform:translateY(-120px) rotate(var(--rot));opacity:0}}
+#eyes2{position:fixed;inset:0;z-index:18000;background:#000;display:none;align-items:center;justify-content:center;gap:4vw;flex-direction:column;color:var(--r);font-weight:900;font-size:1.5rem;text-align:center}
+@media(max-width:800px){.ag,.feat{grid-template-columns:1fr}section{padding:6rem 5vw}nav{padding:1rem}}
+
+html,body{overflow-x:clip;-webkit-tap-highlight-color:transparent}
+section{padding-inline:max(6vw,calc((100vw - 1300px)/2))}
+.hero{min-height:100vh;min-height:100svh}
+.mg{grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:1.2rem}
+.tk{border:1px solid #222;padding:1rem;background:#050505;transition:.4s;position:relative}
+.tk:hover{border-color:var(--r);box-shadow:0 0 50px rgba(225,10,45,.3);transform:translateY(-6px) rotate(-1deg)}
+.tk h3{font:900 1.8rem var(--d);direction:ltr;text-align:right;margin-top:.8rem;letter-spacing:.04em}
+.tk small{color:var(--r);letter-spacing:.2em;display:block;text-align:right;direction:ltr}
+.th{aspect-ratio:16/9;background:repeating-conic-gradient(var(--r2) 0 10deg,#000 10deg 20deg);position:relative;overflow:hidden}
+.th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:.6s}.tk:hover .th img{transform:scale(1.12);filter:saturate(1.4)}
+.pl{position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;background:rgba(0,0,0,.65);border:2px solid var(--r);color:var(--r);display:flex;align-items:center;justify-content:center;font-size:1.4rem;transition:.3s}
+.tk:hover .pl{background:var(--r);color:#000;box-shadow:0 0 40px var(--r);transform:scale(1.15)}
+.mc{min-height:200px;aspect-ratio:auto}
+#vm{position:fixed;inset:0;z-index:12000;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:.4s;backdrop-filter:blur(8px)}
+#vm.on{opacity:1;visibility:visible}
+.vb{width:min(100%,960px);border:1px solid var(--r);box-shadow:0 0 80px rgba(225,10,45,.4);background:#050000;transform:scale(.92);transition:.4s}#vm.on .vb{transform:none}
+.vh,.vc{display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;direction:ltr}
+.vh b{flex:1;font:900 1.2rem var(--d);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vh span{color:var(--r);font-size:.75rem;letter-spacing:.2em}
+.vr{aspect-ratio:16/9;background:#000}.vr iframe{width:100%;height:100%;border:0;display:block}
+.vc{justify-content:space-between}
+.vh button,.vc button,.vc a{background:none;border:1px solid #333;color:#fff;padding:.5rem 1rem;font:inherit;font-size:.85rem;transition:.3s}
+.vh button:hover,.vc button:hover,.vc a:hover{border-color:var(--r);color:var(--r);box-shadow:0 0 15px var(--r)}
+body.vo #dot,body.vo #ring,body.vo #trail{display:none!important}body.vo,body.vo *{cursor:auto!important}
+#q{bottom:1rem}
+.det{flex-wrap:wrap}
+@media(max-width:600px){
+ nav{padding:.8rem 1rem}.logo{font-size:1.5rem}
+ section{padding-top:5rem;padding-bottom:4rem}
+ .eb{letter-spacing:.3em;font-size:.6rem}
+ .big{font-size:clamp(5rem,30vw,10rem)}.big span{-webkit-text-stroke-width:1px!important}
+ #tw{font-size:1rem}.btn{padding:.9rem 1.8rem}
+ .vinyl::after{font-size:1.6rem}
+ .wm span{font-size:1.6rem}.wm{gap:2rem}
+ .stats{gap:1rem}.stats b{font-size:2.2rem}
+ .jn{padding-right:2.4rem;gap:2rem}.nd::before{right:-2.6rem;width:16px;height:16px}.jl,.jn::before{right:7px}
+ .nd:hover{transform:none}.nd h3{font-size:1.4rem}
+ .mq{margin-top:3rem}.mq div{font-size:1rem}
+ .sk{padding:1.2rem}.sk svg{width:38px;height:38px}
+ .st div{padding:1.2rem}.tk h3{font-size:1.5rem}
+ #toasts{top:4rem;left:.5rem;right:.5rem}
+ .vh,.vc{padding:.5rem .6rem}.vc a{display:none}.vc{justify-content:space-between}
+ .scroll{display:none}.eye{width:38px;height:38px}
+}
+@media(max-height:480px) and (orientation:landscape){.hero{padding-top:5rem;min-height:auto}.big{font-size:22vh}.scroll{display:none}}
+@media(hover:none){.big span:hover,.tk:hover,.mc:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<canvas id="bg" class="fx"></canvas>
+<div class="wm" id="wm"></div>
+<div class="vig"></div><div class="scan"></div><div class="noise"></div>
+<canvas id="trail" class="fx"></canvas>
+<div id="pbar"></div><div id="dot"></div><div id="ring"></div><div id="toasts"></div>
+<div id="crazy">YOU ARE<br>CRAZY</div>
+<div id="eyes2"><div style="display:flex;gap:4vw"><div class="eye" style="width:18vw;height:18vw;max-width:150px;max-height:150px"><i style="width:40%;height:40%;top:30%;left:30%"></i></div><div class="eye" style="width:18vw;height:18vw;max-width:150px;max-height:150px"><i style="width:40%;height:40%;top:30%;left:30%"></i></div></div><p>هنوز اینجایی؟ ... دیوونه‌ای.</p></div>
+
+<div id="pre"><div class="n" id="pn">0</div><small>I'M IDEN — I'M CRAZY</small></div>
+
+<nav><a href="#home" class="logo" id="logo">IDEN</a><button id="mb" aria-label="منو"><i></i><i></i></button></nav>
+<div id="ov"><ul>
+<li><a href="#home">خانه</a></li><li><a href="#about">درباره</a></li><li><a href="#music">موسیقی</a></li><li><a href="#journey">مسیر</a></li><li><a href="#social">ارتباط</a></li><li><a href="#contact">تماس</a></li></ul></div>
+
+<main>
+<section class="hero" id="home">
+ <div class="vinyl"></div>
+ <div class="ringp"></div><div class="ringp" style="animation-delay:1.3s"></div><div class="ringp" style="animation-delay:2.6s"></div>
+ <div class="hz" id="hz">
+  <div class="eb">WELCOME TO THE UNIVERSE</div>
+  <h1 class="big" id="big"><span>I</span><span>D</span><span>E</span><span>N</span></h1>
+  <div id="tw"></div>
+  <p class="sub">با <b>آیدن</b> صدا شنیده نمی‌شود؛ صدا <b>درک می‌شود</b></p>
+  <a href="#music" class="btn">آخرین اثر ←</a>
+ </div>
+ <div class="scroll">SCROLL<i></i></div>
+</section>
+
+<section id="about">
+ <div class="rv"><span class="tag">[ 01 ] — ABOUT</span><h2>صدایی که<em>درک می‌شود</em></h2></div>
+ <div class="ag">
+  <div class="blob rv"><i></i><i></i><b>آیدن</b></div>
+  <div class="bio rv">
+   <h3 style="font-size:1.8rem;margin-bottom:1rem">آیدن؛ روایتِ بی‌کلامِ صدا</h3>
+   <p><strong>ناشناخته</strong> با نام هنری <strong>IDEN</strong>، آهنگساز، تهیه‌کننده و هنرمند مستقل است که موسیقی را نه به‌عنوان یک ژانر، بلکه به‌عنوان <em>زبانِ بی‌مرزِ روح</em> انتخاب کرده است.</p>
+   <p>دنیای آیدن به اینسترومنتال‌های غمگین و آلترناتیو محدود نمی‌شود — او در ژانرهای مختلف تجربه می‌کند؛ از فضاهای شنیداری عمیق تا ریتم‌های پرخاشگر، از ملودی‌های لطیف تا ضرب‌های بی‌رحمانه.</p>
+   <p>هر سبک برای او یک زبان تازه است؛ هر قطعه هم روایتی است که با شنونده کامل می‌شود.</p>
+   <div class="stats"><div><b data-n="20">0</b><span>سال</span></div><div><b id="inf">∞</b><span>ایده‌ها</span></div><div><b>...</b><span>در حال خلق</span></div></div>
+   <div class="det"><span>نام واقعی</span><b>ناشناخته</b></div>
+   <div class="det"><span>فعالیت</span><b>آهنگساز · تهیه‌کننده · هنرمند مستقل</b></div>
+   <div class="det"><span>سبک‌ها</span><b>بدون مرز — از آلترناتیو تا الکترونیک</b></div>
+  </div>
+ </div>
+ <div class="mq"><div id="mqt"></div></div>
+</section>
+
+<section id="music">
+ <div class="rv"><span class="tag">[ 02 ] — MUSIC</span><h2>آخرین<em>آثار ریلیز شده</em></h2></div>
+ <div class="mg rv" id="mg"></div>
+</section>
+
+<section id="journey">
+ <div class="rv"><span class="tag">[ 03 ] — JOURNEY</span><h2>مسیر هنری</h2></div>
+ <div class="jn" id="jn"><div class="jl" id="jl"></div>
+  <div class="nd rv"><small>START</small><h3>کشف صدا</h3><p>جرقه اولیه؛ زمانی که موسیقی به زبان اصلی روح تبدیل شد</p></div>
+  <div class="nd rv"><small>EVOLVE</small><h3>پرورش سبک</h3><p>تجربه ژانرهای مختلف و یافتن امضای صوتی شخصی</p></div>
+  <div class="nd rv"><small>IDEN</small><h3>تولد یک برند</h3><p>ادغام موسیقی با هویت بصری؛ آغاز مسیر حرفه‌ای</p></div>
+  <div class="nd on rv"><small>NOW</small><h3>فصل جدید</h3><p>آماده‌سازی برای انتشار اولین آثار رسمی</p></div>
+ </div>
+</section>
+
+<section id="social">
+ <div class="rv"><span class="tag">[ 04 ] — CONNECT</span><h2>شبکه‌های اجتماعی<em>آیدن</em></h2></div>
+ <div class="sc rv">
+  <a class="sk" href="https://instagram.com/idenyouarecrazy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg><div><h3>Instagram</h3><span>@idenyouarecrazy</span></div></a>
+  <a class="sk" href="https://t.me/idenyouarecrazy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.5 3.5 2.8 10.7l5.4 2 2 6.2 3-3.8 4.6 3.4z"/><path d="m8.2 12.7 8.6-6"/></svg><div><h3>Telegram</h3><span>@idenyouarecrazy</span></div></a>
+  <a class="sk" href="https://youtube.com/@idenyouarecrazy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg><div><h3>YouTube</h3><span>@idenyouarecrazy</span></div></a>
+ </div>
+</section>
+
+<section id="streaming">
+ <div class="rv"><span class="tag">[ 05 ] — LISTEN</span><h2>پلتفرم‌های<em>استریم</em></h2></div>
+ <div class="st rv"><div><h3>Spotify</h3><small>COMING SOON</small></div><div><h3>Apple Music</h3><small>COMING SOON</small></div><div><h3>SoundCloud</h3><small>COMING SOON</small></div><div><h3>Deezer</h3><small>COMING SOON</small></div></div>
+</section>
+
+<section id="contact" class="ct">
+ <div class="rv"><span class="tag" style="text-align:center">[ 06 ] — COLLAB</span><h2>آماده‌ای برای<em>همکاری؟</em></h2>
+ <p>برای پروژه‌های موسیقی، همکاری‌های خلاقانه و ارتباطات کاری، در تماس باشید.</p>
+ <a class="btn" href="mailto:sxdanyal@gmail.com" style="font-size:1.2rem">sxdanyal@gmail.com</a></div>
+</section>
+</main>
+
+<footer>
+ <div class="fl gl" data-t="IDEN">IDEN</div>
+ <div class="eyes"><div class="eye"><i></i></div><div class="eye"><i></i></div></div>
+ <div>MUSIC · ART · IDENTITY</div><div style="margin-top:.5rem">© 2026 — IDEN YOU ARE CRAZY — @idenyouarecrazy</div>
+</footer>
+
+<button id="q" title="?">?</button>
+<div id="vm"><div class="vb"><div class="vh"><span id="vi">01 / 03</span><b id="vt"></b><button id="vx" aria-label="بستن">✕</button></div><div class="vr"><iframe id="vf" title="IDEN" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><div class="vc"><button id="vp">⏮ قبلی</button><a id="vy" target="_blank" rel="noopener">YouTube ↗</a><button id="vn">بعدی ⏭</button></div></div></div>
+
+<script>
+(()=>{
+'use strict';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const fine=matchMedia('(pointer:fine)').matches;if(fine)document.body.classList.add('fine');
+
+/* ===== TRACKS — آهنگ جدید: فقط یک آبجکت به این آرایه اضافه کن ===== */
+const TRACKS=[
+ {title:'MidNight',sub:'IDEN',yt:'_UyuSLrYJgE'},
+ {title:'Empire Of Persia',sub:'امپراتوری ایران',yt:'a5Wz9AguRoc'},
+ {title:'Khodahafezi',sub:'خداحافظی',yt:'8feapgZrg6s'}
+];
+
+/* watermark + marquee */
+$('#wm').innerHTML='<span>IDEN YOU ARE CRAZY ● IDEN YOU ARE CRAZY ● IDEN YOU ARE CRAZY ● IDEN YOU ARE CRAZY</span>'.repeat(26);
+const ph=['آنجا که کلام می‌میره، سازها متولد می‌شن','بعضی حرف‌ها رو فقط سازها می‌تونن بزنن','سازها حرف می‌زنند، ما فقط گوش می‌دیم','موسیقی بدون آوا، خالص‌ترین روایته','IDEN YOU ARE CRAZY'];
+const mq=ph.map(t=>`<span>${t}</span><i>●</i>`).join('');$('#mqt').innerHTML=mq+mq;
+
+/* toast */
+const toast=m=>{const d=document.createElement('div');d.className='ts';d.textContent=m;$('#toasts').appendChild(d);setTimeout(()=>d.remove(),4100)};
+
+/* preloader */
+const pn=$('#pn');let p=0;const pt=setInterval(()=>{p=Math.min(100,p+Math.random()*9+2);pn.textContent=Math.floor(p);pn.className='n gl';pn.dataset.t=Math.floor(p);if(p>=100){clearInterval(pt);setTimeout(()=>{$('#pre').classList.add('go');setTimeout(()=>$('#pre').remove(),1100);typeLoop()},350)}},90);
+
+/* typewriter */
+const tp=['موسیقی بدون کلام','صدا درک می‌شود','IDEN YOU ARE CRAZY','آنجا که کلام می‌میره'];let ti=0,ci=0,del=false;
+function typeLoop(){const w=$('#tw'),s=tp[ti];ci+=del?-1:1;w.textContent=s.slice(0,ci);let d=del?35:90;
+ if(!del&&ci===s.length){del=true;d=1600}else if(del&&ci===0){del=false;ti=(ti+1)%tp.length;d=400}setTimeout(typeLoop,d)}
+
+/* mouse */
+let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;const dot=$('#dot'),ring=$('#ring'),tc=$('#trail'),tx=tc.getContext('2d'),pts=[];
+function sz(){tc.width=innerWidth;tc.height=innerHeight}sz();
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px)`;pts.push({x:mx,y:my,l:1});
+ const hz=$('#hz'),nx=(mx/innerWidth-.5),ny=(my/innerHeight-.5);hz.style.setProperty('--ry',nx*18+'deg');hz.style.setProperty('--rx',-ny*18+'deg');
+ $$('.eye i').forEach(i=>{const b=i.parentElement.getBoundingClientRect(),a=Math.atan2(my-b.top-b.height/2,mx-b.left-b.width/2),r=b.width*.22;i.style.left=b.width/2-i.offsetWidth/2+Math.cos(a)*r+'px';i.style.top=b.height/2-i.offsetHeight/2+Math.sin(a)*r+'px'});
+ idle=0});
+document.addEventListener('mouseover',e=>ring.classList.toggle('h',!!e.target.closest('a,button,.mc,.feat')));
+(function tl(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.transform=`translate(${rx}px,${ry}px)`;
+ tx.clearRect(0,0,tc.width,tc.height);for(let i=pts.length-1;i>=0;i--){const q=pts[i];q.l-=.03;if(q.l<=0){pts.splice(i,1);continue}tx.beginPath();tx.fillStyle=`rgba(225,10,45,${q.l*.7})`;tx.shadowColor='#e10a2d';tx.shadowBlur=12;tx.arc(q.x,q.y,q.l*7,0,7);tx.fill()}
+ requestAnimationFrame(tl)})();
+
+/* matrix rain bg */
+const bg=$('#bg'),bx=bg.getContext('2d');let cols,dr;const G='IDEN♪♫01◢◣✕؟آیدن▲';
+function rs(){bg.width=innerWidth;bg.height=innerHeight;sz();cols=Math.ceil(bg.width/24);dr=Array.from({length:cols},()=>Math.random()*-60)}rs();addEventListener('resize',rs);
+setInterval(()=>{bx.fillStyle='rgba(0,0,0,.1)';bx.fillRect(0,0,bg.width,bg.height);bx.font='18px Vazirmatn';
+ for(let i=0;i<cols;i++){const x=i*24,near=Math.abs(x-mx)<90;bx.fillStyle=near?'#fff':Math.random()>.98?'#fff':'#e10a2d';bx.fillText(G[Math.random()*G.length|0],x,dr[i]*24);
+  if(dr[i]*24>bg.height&&Math.random()>.975)dr[i]=0;dr[i]+=near?1.4:.6}},50);
+
+/* progress bar, reveal, parallax */
+const jl=$('#jl');
+addEventListener('scroll',()=>{const h=document.documentElement,s=h.scrollTop/(h.scrollHeight-innerHeight);$('#pbar').style.width=s*100+'%';
+ const j=$('#jn').getBoundingClientRect();jl.style.height=Math.max(0,Math.min(j.height,innerHeight*.7-j.top))+'px';
+ $('.vinyl').style.translate='0 '+scrollY*.25+'px'},{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');const c=$('[data-n]',e.target);if(c&&!c.done){c.done=1;let n=0;const t=setInterval(()=>{c.textContent=++n;if(n>=+c.dataset.n)clearInterval(t)},60)}}}),{threshold:.15});
+$$('.rv').forEach(e=>io.observe(e));
+
+/* menu */
+const mb=$('#mb'),ov=$('#ov');const tg=()=>{mb.classList.toggle('o');ov.classList.toggle('o')};
+mb.onclick=tg;$$('#ov a').forEach(a=>a.onclick=tg);
+
+/* scramble headings */
+const ch='█▓▒░<>/\\#@$%&';
+$$('h2,h3,.nd h3').forEach(el=>el.addEventListener('mouseenter',()=>{const o=el.dataset.o||(el.dataset.o=el.textContent);let f=0;const t=setInterval(()=>{el.textContent=[...o].map((c,i)=>i<f/2?c:c===' '?' ':ch[Math.random()*ch.length|0]).join('');if(++f>o.length*2){el.textContent=o;clearInterval(t)}},30)}));
+/* social spotlight */
+$$('.sk').forEach(k=>{k.addEventListener('mousemove',e=>{const b=k.getBoundingClientRect();k.style.setProperty('--mx',e.clientX-b.left+'px');k.style.setProperty('--my',e.clientY-b.top+'px');k.style.transform=`translate(${(e.clientX-b.left-b.width/2)*.06}px,${(e.clientY-b.top-b.height/2)*.12}px)`});k.addEventListener('mouseleave',()=>k.style.transform='')});
+
+/* ===== player (YouTube) ===== */
+const B=document.body,vm=$('#vm'),vf=$('#vf');let cur=0;
+const yl=i=>'https://www.youtube.com/watch?v='+TRACKS[i].yt;
+$('#mg').innerHTML=TRACKS.map((t,i)=>`<div class="tk" data-i="${i}"><div class="th"><img src="https://i.ytimg.com/vi/${t.yt}/hqdefault.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><span class="pl">▶</span></div><h3 class="gl" data-t="${t.title}">${t.title}</h3><small>${t.sub} · 0${i+1}</small></div>`).join('')+'<div class="mc"><b>?</b><span>اثر بعدی</span><small>COMING SOON</small></div>';
+$$('.tk').forEach(k=>k.onclick=()=>op(+k.dataset.i));
+function op(n){cur=(n+TRACKS.length)%TRACKS.length;vf.src=`https://www.youtube-nocookie.com/embed/${TRACKS[cur].yt}?autoplay=1&rel=0&playsinline=1`;$('#vt').textContent=TRACKS[cur].title;$('#vi').textContent=`0${cur+1} / 0${TRACKS.length}`;$('#vy').href=yl(cur);vm.classList.add('on');B.classList.add('playing','vo')}
+function cl(){vm.classList.remove('on');vf.src='about:blank';B.classList.remove('playing','vo')}
+$('#vp').onclick=()=>op(cur-1);$('#vn').onclick=()=>op(cur+1);$('#vx').onclick=cl;vm.addEventListener('click',e=>{if(e.target===vm)cl()});
+addEventListener('keydown',e=>{if(!vm.classList.contains('on'))return;if(e.key==='Escape')cl();if(e.key==='ArrowRight')op(cur-1);if(e.key==='ArrowLeft')op(cur+1)});
+addEventListener('touchmove',e=>{const t=e.touches[0];pts.push({x:t.clientX,y:t.clientY,l:1})},{passive:true});
+
+/* ===== EASTER EGGS ===== */
+const mad=()=>{if(document.body.classList.contains('mad'))return;document.body.classList.add('mad');toast('🩸 YOU ARE CRAZY 🩸');setTimeout(()=>document.body.classList.remove('mad'),5000)};
+let lc=0;$('#logo').addEventListener('click',()=>{if(++lc>=5){lc=0;mad()}setTimeout(()=>lc=0,2500)});
+const kon='ArrowUp,ArrowUp,ArrowDown,ArrowDown,ArrowLeft,ArrowRight,ArrowLeft,ArrowRight,b,a'.split(',');let ki=0,typed='';
+addEventListener('keydown',e=>{ki=e.key===kon[ki]?ki+1:0;if(ki===kon.length){ki=0;mad()}
+ typed=(typed+e.key.toLowerCase()).slice(-8);if(typed.endsWith('iden'))toast('اسمم رو صدا زدی؟ 👁');if(typed.endsWith('crazy'))mad();if(typed.endsWith('red'))document.documentElement.style.filter='saturate(2.5) contrast(1.2)'});
+const msg=['تو دیوونه‌ای. منم همینطور.','دکمه‌ی ? رو زیاد نزن...','۵ بار روی لوگو کلیک کن 👀','Konami رو بلدی؟','"iden" رو تایپ کن','IDEN YOU ARE CRAZY','کسی داره نگات می‌کنه... ته صفحه رو ببین','آهنگ بعدی؟ به‌زودی.'];let mi=0;
+$('#q').onclick=()=>toast(msg[mi++%msg.length]);
+addEventListener('contextmenu',e=>{e.preventDefault();toast('403 — دسترسی تعریف نشده')});
+addEventListener('copy',e=>{e.preventDefault();e.clipboardData.setData('text/plain',getSelection().toString()+'\n— IDEN YOU ARE CRAZY (@idenyouarecrazy)');toast('کپی شد... ولی نشونه‌ی IDEN روشه')});
+addEventListener('click',e=>{if(Math.random()<.18){const s=document.createElement('div');s.className='fw';s.textContent=['IDEN','CRAZY','♪','YOU ARE CRAZY','👁'][Math.random()*5|0];s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';s.style.setProperty('--rot',(Math.random()*60-30)+'deg');document.body.appendChild(s);setTimeout(()=>s.remove(),1700)}
+ for(let i=0;i<8;i++){pts.push({x:e.clientX+(Math.random()-.5)*50,y:e.clientY+(Math.random()-.5)*50,l:1.3})}});
+$('#inf').addEventListener('click',()=>toast('ایده‌ها تمومی ندارن. ∞'));
+$$('.big span').forEach(s=>s.addEventListener('dblclick',()=>toast('حرف «'+s.textContent+'» ازت متنفر شد')));
+const t0=document.title;document.addEventListener('visibilitychange',()=>document.title=document.hidden?'برگرد... IDEN منتظره 👁':t0);
+let idle=0;setInterval(()=>{if(++idle>=30){idle=0;const e=$('#eyes2');e.style.display='flex';setTimeout(()=>e.style.display='none',3200)}},1000);
+['click','keydown','scroll'].forEach(v=>addEventListener(v,()=>idle=0));
+console.log('%cIDEN','font:900 80px Impact;color:#e10a2d;text-shadow:0 0 20px #e10a2d','\n%cYOU ARE CRAZY. @idenyouarecrazy','color:#e10a2d;font-size:14px');
+})();
+</script>
+</body>
+</html>
